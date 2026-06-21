@@ -1,0 +1,160 @@
+/* ============================================
+   MISIÓN 4: DISCORD - SORTEO FALSO
+   ============================================ */
+
+/* ---------- BOTÓN PRINCIPAL ---------- */
+.discord-btn {
+  background: linear-gradient(135deg, #facc15, #eab308);
+  color: #1e3a8a;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 18px 40px;
+  margin-top: 40px;
+  border: none;
+  border-radius: 60px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(250,204,21,0.5);
+}
+
+.discord-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 35px rgba(250,204,21,0.8);
+}
+
+/* ---------- ESTILOS DEL CHAT DE DISCORD ---------- */
+.discord-chat {
+  background: #1e1e2f;
+  border-radius: 20px;
+  padding: 25px;
+  text-align: left;
+}
+
+.discord-message {
+  background: #2a2a3a;
+  border-radius: 18px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.discord-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.discord-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.discord-username {
+  font-weight: bold;
+}
+
+.discord-bot {
+  background: #5865f2;
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+  margin-left: 8px;
+}
+
+.fake-url {
+  background: #1a1a2a;
+  padding: 12px;
+  border-radius: 10px;
+  font-family: monospace;
+  word-break: break-all;
+  margin-top: 10px;
+}
+
+.fake-url span {
+  color: #ef4444;
+  font-weight: bold;
+}
+
+/* ---------- CAJETÍN CON HALO PULSANTE ---------- */
+.glowing-question {
+  background: #1a1a2a;
+  border: 2px solid #5865f2;
+  border-radius: 18px;
+  padding: 20px;
+  margin-top: 20px;
+  text-align: center;
+  animation: pulseGlowDiscord 1.5s ease-in-out infinite;
+}
+
+@keyframes pulseGlowDiscord {
+  0% {
+    box-shadow: 0 0 0 0 rgba(88,101,242,0.4);
+    border-color: #5865f2;
+  }
+  50% {
+    box-shadow: 0 0 20px 8px rgba(88,101,242,0.6);
+    border-color: #818cf8;
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(88,101,242,0.4);
+    border-color: #5865f2;
+  }
+}
+
+/* ---------- BOTONES DE DECISIÓN (ESTILO NEUTRO) ---------- */
+.choice-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.decision-btn {
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 60px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+/* Estado SIN SELECCIONAR */
+.decision-btn:not(.selected) {
+  background: #38bdf8;
+  color: black;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Estado SELECCIONADO */
+.decision-btn.selected {
+  background: #3b4261;
+  color: black;
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(20,220,195,0.8);
+}
+
+/* Efecto hover */
+.decision-btn:not(.selected):hover {
+  background: #1a73e8;
+  transform: scale(1.02);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 600px) {
+  .discord-btn {
+    font-size: 1.2rem;
+    padding: 14px 25px;
+  }
+  .decision-btn {
+    padding: 12px 20px;
+    font-size: 0.95rem;
+  }
+}

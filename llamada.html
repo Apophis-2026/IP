@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>⚠️ Alerta de Seguridad</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Courier New', monospace;
+    }
+
+    html, body {
+      height: 100%;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0a0a0a, #1a0000);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+      touch-action: manipulation;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* ============================================
+       PANTALLA 1: Falso virus (CORREGIDA)
+       ============================================ */
+    .screen {
+      width: 100%;
+      max-width: 480px;
+      background: #0a0a0a;
+      border-radius: 24px;
+      padding: 25px 20px;
+      text-align: center;
+      border: 3px solid #ef4444;
+      box-shadow: 0 0 50px rgba(239,68,68,0.3);
+      animation: pulse 0.8s infinite;
+      /* CENTRADO PERFECTO */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    @media (max-width: 480px) {
+      .screen {
+        padding: 20px 15px;
+        border-radius: 16px;
+        max-width: 95%;
+        max-height: 85vh;
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 20px rgba(239,68,68,0.3); }
+      50% { box-shadow: 0 0 50px rgba(239,68,68,0.8); }
+    }
+
+    .hacker-icon {
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      color: #ef4444;
+      font-size: clamp(0.9rem, 3.75vw, 1.35rem);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      word-break: break-word;
+    }
+
+    .warning-text {
+      color: #facc15;
+      font-size: clamp(0.85rem, 3vw, 1rem);
+      margin: 12px 0;
+      background: #1a1a1a;
+      padding: 12px;
+      border-radius: 12px;
+      line-height: 1.5;
+    }
+
+    .bitcoin-address {
+      background: #1a1a1a;
+      padding: 10px;
+      border-radius: 12px;
+      font-family: monospace;
+      font-size: clamp(0.65rem, 2.5vw, 0.85rem);
+      color: #facc15;
+      word-break: break-all;
+      margin: 10px 0;
+    }
+
+    .bitcoin-address span {
+      font-size: clamp(0.55rem, 2vw, 0.75rem);
+      display: block;
+      margin-top: 5px;
+    }
+
+    .timer {
+      color: #ef4444;
+      font-size: clamp(1.3rem, 6vw, 1.8rem);
+      font-weight: bold;
+      margin: 12px 0;
+      animation: blink 0.5s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .btn {
+      background: #ef4444;
+      color: white;
+      border: none;
+      padding: clamp(12px, 4vw, 15px) clamp(20px, 6vw, 30px);
+      border-radius: 40px;
+      font-size: clamp(0.9rem, 3vw, 1rem);
+      font-weight: bold;
+      cursor: pointer;
+      margin: 8px auto;
+      transition: 0.2s;
+      touch-action: manipulation;
+      min-height: 44px;
+      min-width: 200px;
+      display: block;
+    }
+
+    @media (max-width: 480px) {
+      .btn {
+        min-width: 160px;
+        padding: 12px 20px;
+      }
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+    .btn:active {
+      transform: scale(0.95);
+    }
+
+    /* ============================================
+       PANTALLA 2: Revelación educativa (2 COLUMNAS)
+       ============================================ */
+    .reveal-screen {
+      width: 100%;
+      max-width: 600px;
+      background: linear-gradient(135deg, #1e3a8a, #0f172a);
+      border-radius: 24px;
+      padding: 25px 20px;
+      text-align: center;
+      border: 2px solid #38bdf8;
+      display: none;
+      /* CENTRADO PERFECTO */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-height: 90vh;
+      overflow-y: auto;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, -50%) scale(0.95); }
+      to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    }
+
+    @media (max-width: 480px) {
+      .reveal-screen {
+        padding: 20px 15px;
+        border-radius: 16px;
+        max-width: 95%;
+        max-height: 85vh;
+      }
+    }
+
+    .reveal-screen h2 {
+      color: #38bdf8;
+      font-size: clamp(1.2rem, 5vw, 1.8rem);
+      margin-bottom: 12px;
+    }
+
+    .reveal-screen > p {
+      color: #cbd5e1;
+      line-height: 1.5;
+      margin: 10px 0;
+      font-size: clamp(0.85rem, 3vw, 0.95rem);
+    }
+
+    .good-icon {
+      font-size: clamp(2rem, 10vw, 3.5rem);
+      margin: 10px 0;
+    }
+
+    /* CONTENEDOR DE 2 COLUMNAS */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 12px 0;
+    }
+
+    @media (max-width: 480px) {
+      .info-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+    }
+
+    .info-box {
+      background: #1e293b;
+      border-radius: 16px;
+      padding: 12px 15px;
+      text-align: left;
+      border-left: 3px solid #38bdf8;
+      height: fit-content;
+    }
+
+    .info-box p {
+      color: #38bdf8;
+      font-weight: bold;
+      font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+      margin-bottom: 8px;
+    }
+
+    .info-box ul {
+      padding-left: 16px;
+      margin: 0;
+    }
+
+    .info-box li {
+      margin: 6px 0;
+      color: #cbd5e1;
+      font-size: clamp(0.75rem, 2.5vw, 0.85rem);
+      list-style-type: none;
+    }
+
+    .info-box li::before {
+      content: "► ";
+      color: #38bdf8;
+    }
+
+    .cyber-logo {
+      font-size: clamp(1.2rem, 5vw, 1.8rem);
+      color: #38bdf8;
+      margin: 10px 0;
+    }
+
+    /* BOTÓN DE INVITACIÓN MEJORADO */
+    .invite-btn {
+      background: linear-gradient(135deg, #facc15, #eab308);
+      color: #1e3a8a;
+      font-weight: bold;
+      border: none;
+      padding: clamp(12px, 4vw, 15px) clamp(20px, 6vw, 30px);
+      border-radius: 40px;
+      font-size: clamp(0.9rem, 3vw, 1rem);
+      cursor: pointer;
+      margin: 8px auto;
+      transition: 0.2s;
+      touch-action: manipulation;
+      min-height: 44px;
+      min-width: 200px;
+      box-shadow: 0 4px 15px rgba(250,204,21,0.3);
+      display: inline-block;
+    }
+
+    .invite-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(250,204,21,0.6);
+    }
+
+    .invite-btn:active {
+      transform: scale(0.95);
+    }
+
+    @media (max-width: 480px) {
+      .invite-btn {
+        min-width: 160px;
+        padding: 12px 20px;
+      }
+    }
+
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .share-btn {
+      background: transparent;
+      color: #38bdf8;
+      border: 1px solid #38bdf8;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-top: 10px;
+    }
+
+    .share-btn:hover {
+      background: #38bdf8;
+      color: #0f172a;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- PANTALLA 1: SIMULACIÓN DE ATAQUE -->
+<div id="scamScreen" class="screen">
+  <div class="hacker-icon">💀⚠️💀</div>
+  <h1>🔴 ¡SISTEMA COMPROMETIDO! 🔴</h1>
+  
+  <div class="warning-text">
+    ⚡ Tu dispositivo ha sido infectado con un ransomware ⚡<br>
+    <strong>Tus archivos personales están encriptados</strong>
+  </div>
+
+  <div class="bitcoin-address">
+    💰 Para desbloquear tu teléfono, deposita:<br>
+    <strong>0.05 BTC (~$1,500 USD)</strong><br>
+    a esta dirección:<br>
+    <span>bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh</span>
+  </div>
+
+  <div class="timer">
+    ⏱️ 23:45 ⏱️
+  </div>
+
+  <button class="btn" id="scaredBtn">😨 ¡NO QUIERO PERDER MIS FOTOS!</button>
+</div>
+
+<!-- PANTALLA 2: REVELACIÓN EDUCATIVA (2 COLUMNAS) -->
+<div id="revealScreen" class="reveal-screen">
+  <div class="good-icon">🎓🕵️‍♂️🎓</div>
+  
+  <h2>¡ES SOLO UNA SIMULACIÓN!</h2>
+  
+  <p>
+    <strong>Tu teléfono NO está infectado.</strong><br>
+    Esto es una demostración de cómo los ciberdelincuentes intentan asustarte para que pagues.
+  </p>
+
+  <!-- CONTENEDOR DE 2 COLUMNAS -->
+  <div class="info-grid">
+    <div class="info-box">
+      <p>📚 ¿Qué acabas de experimentar?</p>
+      <ul>
+        <li>Ransomware <strong>falso</strong></li>
+        <li>Cuenta Bitcoin <strong>falsa</strong></li>
+        <li>Temporizador para <strong>asustarte</strong></li>
+      </ul>
+    </div>
+
+    <div class="info-box">
+      <p>🛡️ ¿Cómo protegerte?</p>
+      <ul>
+        <li>NUNCA pagues rescates</li>
+        <li>Haz copias de seguridad</li>
+        <li>No abras enlaces sospechosos</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cyber-logo">
+    🕵️ Cyber Detective Academy
+  </div>
+
+  <p style="font-weight: bold; color: #facc15; font-size: clamp(0.95rem, 3.5vw, 1.1rem); margin: 5px 0;">
+    📍 ¡Visítanos en nuestro módulo!
+  </p>
+  <p style="color: #cbd5e1; font-size: clamp(0.75rem, 2.5vw, 0.85rem); margin: 0 0 10px 0;">
+    Aprende a protegerte de estos engaños con nuestro juego interactivo
+  </p>
+
+  <div class="btn-group">
+    <button class="invite-btn" id="inviteBtn">🎮 Conocer el juego</button>
+    <button class="share-btn" id="shareBtn">📤 Compartir</button>
+  </div>
+</div>
+
+<script>
+  // ============================================
+  // 1. OBTENER ELEMENTOS
+  // ============================================
+  const scamScreen = document.getElementById('scamScreen');
+  const revealScreen = document.getElementById('revealScreen');
+  const scaredBtn = document.getElementById('scaredBtn');
+  const inviteBtn = document.getElementById('inviteBtn');
+  const shareBtn = document.getElementById('shareBtn');
+
+  // ============================================
+  // 2. BOTÓN ROJO - PASA A PANTALLA AZUL
+  // ============================================
+  scaredBtn.addEventListener('click', function(e) {
+    console.log('Botón rojo presionado'); // Para depuración
+    scamScreen.style.display = 'none';
+    revealScreen.style.display = 'block';
+    if (navigator.vibrate) navigator.vibrate(50);
+  });
+
+  // ============================================
+  // 3. BOTÓN DE INVITACIÓN
+  // ============================================
+  inviteBtn.addEventListener('click', function(e) {
+    const originalText = inviteBtn.innerHTML;
+    inviteBtn.innerHTML = '<span class="loading"></span> Preparando...';
+    inviteBtn.disabled = true;
+    
+    setTimeout(() => {
+      alert('🎯 ¡Te esperamos en nuestro módulo!\n\n🔍 Descubre "Cyber Detective Academy"\n🛡️ Aprende a identificar estafas digitales\n🎮 Juego interactivo para toda la familia\n\n📍 Ubícanos en la feria escolar\n📅 No te pierdas esta experiencia única!');
+      inviteBtn.innerHTML = originalText;
+      inviteBtn.disabled = false;
+    }, 800);
+  });
+
+  // ============================================
+  // 4. BOTÓN DE COMPARTIR
+  // ============================================
+  shareBtn.addEventListener('click', function() {
+    if (navigator.share) {
+      navigator.share({
+        title: '⚠️ ¿Sabías que esto es una estafa?',
+        text: 'Aprende a protegerte de ciberataques con Cyber Detective Academy 🕵️',
+        url: window.location.href
+      }).catch(() => {});
+    } else {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        alert('📋 ¡Enlace copiado al portapapeles!\nCompártelo con tus amigos y familiares.');
+      }).catch(() => {
+        alert('📱 Comparte esta URL con tus amigos:\n' + window.location.href);
+      });
+    }
+  });
+
+  // ============================================
+  // 5. DETECCIÓN DE MÓVIL (texto más claro)
+  // ============================================
+  if (window.innerWidth <= 768) {
+    const warningText = document.querySelector('.warning-text');
+    if (warningText) {
+      warningText.innerHTML = 
+        '⚠️ TU CELULAR ESTÁ EN PELIGRO ⚠️<br><small style="font-size: 0.7rem; color: #94a3b8;">(simulación educativa - no te preocupes)</small>';
+    }
+  }
+</script>
+
+</body>
+</html>

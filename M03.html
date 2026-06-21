@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Misión 3 | Roblox: El Amigo Falso</title>
+  <link rel="stylesheet" href="base.css" />
+  <link rel="stylesheet" href="M03.css" />
+  <style>
+    .roblox-btn {
+      background: linear-gradient(135deg, #facc15, #eab308);
+      color: #1e3a8a;
+      font-size: 1.5rem;
+      font-weight: bold;
+      padding: 18px 40px;
+      margin-top: 40px;
+      border: none;
+      border-radius: 60px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px rgba(250,204,21,0.5);
+    }
+    .roblox-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 35px rgba(250,204,21,0.8);
+    }
+  </style>
+</head>
+<body>
+
+<div class="score-bar">
+  <span>🏆</span> Puntos: <span id="scoreValue">0</span>
+</div>
+
+<!-- PANTALLA 1: EXPLICACIÓN -->
+<section class="screen active" id="missionIntroScreen">
+  <div class="panel">
+    <div style="font-size: 4rem;">🎮🤖</div>
+    <h2 class="mission-title">Misión 3: El "Amigo" Falso</h2>
+    <p class="mission-text">
+      Estás jugando Roblox y recibes un mensaje de un jugador que no conoces.
+    </p>
+    <div class="question-highlight">
+      💬 "¡Oye! Te regalo 500 robux si me dices tu nombre real y me agregas de amigo"
+    </div>
+    <button class="roblox-btn" id="seeChatBtn">💬 VER MENSAJE</button>
+  </div>
+</section>
+
+<!-- PANTALLA 2: CHAT DE ROBLOX -->
+<section class="screen" id="chatScreen">
+  <div class="panel" style="max-width: 650px;">
+    <div style="background: #1e1e2f; border-radius: 20px; padding: 25px; text-align: left;">
+      
+      <!-- Cabecera del jugador -->
+      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px;">
+        <div style="background: #00b2ff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem;">👾</div>
+        <div>
+          <strong style="color: #00b2ff;">ProPlayer1337</strong>
+          <span style="color: #6c6c8a; font-size: 0.8rem;">● En línea</span>
+        </div>
+      </div>
+      
+      <!-- Mensajes del estafador -->
+      <div style="background: #2a2a3a; border-radius: 18px; padding: 15px; margin-bottom: 15px;">
+        <p>🤝 Hola! Vi que juegas muy bien. Quiero hacerte un regalo.</p>
+      </div>
+      
+      <div style="background: #2a2a3a; border-radius: 18px; padding: 15px; margin-bottom: 15px;">
+        <p>💰 Te doy <strong style="color: #facc15;">500 Robux GRATIS</strong> solo por ser mi amigo.</p>
+      </div>
+      
+      <div style="background: #2a2a3a; border-radius: 18px; padding: 15px; margin-bottom: 15px;">
+        <p>📝 Solo necesito que me digas:<br>
+        • ¿Cómo te llamas?<br>
+        • ¿Qué edad tienes?<br>
+        • ¿En qué colegio estudias?</p>
+      </div>
+      
+      <!-- Cajetín con halo pulsante -->
+      <div class="glowing-box" id="decisionBox">
+        <p style="color: #facc15; font-weight: bold; margin-bottom: 10px;">⚠️ ¿QUÉ DEBERÍAS HACER? ⚠️</p>
+        <p style="font-size: 0.9rem;">Elige la opción correcta para proteger tus datos</p>
+      </div>
+    </div>
+    
+    <!-- Botones de decisión (estilo neutro) -->
+    <div class="choice-buttons">
+      <button class="decision-btn" id="badChoiceBtn" data-value="bad">📝 Dar mis datos</button>
+      <button class="decision-btn" id="goodChoiceBtn" data-value="good">🛡️ Bloquear y reportar</button>
+    </div>
+  </div>
+</section>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay"></div>
+
+<!-- MODAL ÉXITO (estilo oscuro) -->
+<div class="modal success-modal-custom" id="successModal">
+  <div class="modal-icon">🤖✨🛡️</div>
+  <h2>🎉 ¡Excelente decisión, detective!</h2>
+  <p>Has decidido NO compartir tus datos y reportar al jugador sospechoso.</p>
+  <div class="modal-tips">
+    <p>🔐 <strong>Consejos importantes:</strong></p>
+    <ul>
+      <li>Nunca aceptes regalos de extraños en juegos</li>
+      <li>Pueden ser estafas para robar tu cuenta o tus datos</li>
+      <li>Siempre reporta usuarios sospechosos a la plataforma</li>
+      <li>No compartas información personal en el chat del juego</li>
+    </ul>
+  </div>
+  <p class="points-add"><strong>+100 puntos</strong> por proteger tu privacidad.</p>
+  <button class="modal-button" id="continueBtn">🏆 Siguiente misión</button>
+</div>
+
+<!-- MODAL ERROR (estilo oscuro) -->
+<div class="modal error-modal-custom" id="errorModal">
+  <div class="modal-icon">⚠️💀⚠️</div>
+  <h2>⚠️ ¡Cuidado! Has caído en una trampa</h2>
+  <p>Compartir tus datos con un desconocido puede ser muy peligroso.</p>
+  <div class="modal-tips">
+    <p>🔐 <strong>Recuerda:</strong></p>
+    <ul>
+      <li>Los estafadores usan ofertas falsas para obtener información personal</li>
+      <li>Siempre debes: Bloquear, reportar y NO responder a extraños</li>
+      <li>Nunca des tu nombre real, edad o colegio en juegos online</li>
+    </ul>
+  </div>
+  <button class="modal-button" id="closeErrorBtn">🔍 Intentar de nuevo</button>
+</div>
+
+<script src="M03.js"></script>
+</body>
+</html>

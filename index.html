@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Cyber Detective Academy | Inicio</title>
+  <link rel="stylesheet" href="base.css" />
+  <style>
+    /* Estilos específicos para el botón de inicio */
+    .start-btn {
+      background: linear-gradient(135deg, #38bdf8, #2563eb);
+      color: white;
+      font-size: 1.8rem;
+      font-weight: bold;
+      padding: 20px 50px;
+      margin-top: 50px;
+      border: none;
+      border-radius: 60px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px rgba(56,189,248,0.5);
+      animation: bounce 2s infinite;
+    }
+
+    .start-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 35px rgba(56,189,248,0.8);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+
+    }
+
+    /* Icono del botón */
+    .start-btn::before {
+      content: "🕵️ ";
+      font-size: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<div class="score-bar">
+  <span>🏆</span> Puntos: <span id="scoreValue">0</span>
+</div>
+
+<section class="screen active" id="introScreen">
+  <div class="panel">
+    <h1 class="main-title">🕵️ Cyber Detective Academy</h1>
+    <p class="description">
+      Aprende a detectar páginas falsas, proteger tus datos personales y navegar seguro.<br><br>
+      Tu misión será descubrir cómo los ciberdelincuentes intentan engañarte.
+    </p>
+    <button class="start-btn" id="startBtn">COMENZAR AVENTURA</button>
+  </div>
+</section>
+
+<script>
+  let puntos = localStorage.getItem('cyberPoints') ? parseInt(localStorage.getItem('cyberPoints')) : 0;
+  document.getElementById('scoreValue').innerText = puntos;
+
+  document.getElementById('startBtn').addEventListener('click', () => {
+    window.location.href = 'M01.html';
+  });
+</script>
+
+</body>
+</html>

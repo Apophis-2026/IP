@@ -1,0 +1,146 @@
+/* ============================================
+   MISIÓN 1: FACEBOOK FALSO
+   ============================================ */
+
+.facebook-scene {
+  width: 100%;
+  max-width: 1200px;
+  background: #f0f2f5;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(0,0,0,0.45);
+  position: relative;
+}
+
+.browser-top {
+  background: #dfe3e8;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.red { background: #ef4444; }
+.yellow { background: #facc15; }
+.green { background: #22c55e; }
+
+.url-bar {
+  background: white;
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #111827;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.fake-part {
+  color: #dc2626;
+  font-weight: bold;
+  padding: 2px 4px;
+  border-radius: 6px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.fake-part:hover {
+  background: #fee2e2;
+}
+
+.facebook-layout {
+  display: flex;
+  justify-content: space-between;
+  padding: 60px 70px;
+  min-height: 650px;
+  align-items: center;
+  gap: 40px;
+}
+
+.facebook-left {
+  flex: 1;
+}
+
+.facebook-logo {
+  color: #1877f2;
+  font-size: 4.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.facebook-text {
+  color: #1c1e21;
+  font-size: 1.8rem;
+  line-height: 1.5;
+  max-width: 500px;
+}
+
+.login-card {
+  width: 420px;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+
+.input {
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 14px;
+  background: #1877f2;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.forgot {
+  text-align: center;
+  margin: 18px 0;
+  color: #1877f2;
+  font-size: 0.95rem;
+}
+
+.divider {
+  height: 1px;
+  background: #dadde1;
+  margin: 20px 0;
+}
+
+.create-btn {
+  display: block;
+  margin: auto;
+  background: #42b72a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* Responsive M01 */
+@media (max-width: 900px) {
+  .facebook-layout {
+    flex-direction: column;
+    padding: 40px 20px;
+  }
+  .login-card {
+    width: 100%;
+  }
+}

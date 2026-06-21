@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Misión 4 | Discord: Sorteo Falso</title>
+  <link rel="stylesheet" href="base.css" />
+  <link rel="stylesheet" href="M04.css" />
+</head>
+<body>
+
+<div class="score-bar">
+  <span>🏆</span> Puntos: <span id="scoreValue">0</span>
+</div>
+
+<!-- PANTALLA 1: EXPLICACIÓN -->
+<section class="screen active" id="missionIntroScreen">
+  <div class="panel">
+    <div style="font-size: 4rem;">🎮💬</div>
+    <h2 class="mission-title">Misión 4: Sorteo Falso en Discord</h2>
+    <p class="mission-text">
+      Estás en un servidor de Discord y ves un mensaje de un "bot" sobre un sorteo especial.
+    </p>
+    <div class="question-highlight">
+      🎁 "¡Felicidades! Has sido seleccionado para ganar $100. Haz clic aquí para reclamar tu premio."
+    </div>
+    <button class="discord-btn" id="seeMsgBtn">💬 VER MENSAJE SOSPECHOSO</button>
+  </div>
+</section>
+
+<!-- PANTALLA 2: MENSAJE DE DISCORD -->
+<section class="screen" id="messageScreen">
+  <div class="panel" style="max-width: 650px;">
+    <div class="discord-chat">
+      
+      <!-- Mensaje del bot falso -->
+      <div class="discord-message">
+        <div class="discord-header">
+          <div class="discord-avatar" style="background: #5865f2;">🎲</div>
+          <div>
+            <span class="discord-username" style="color: #5865f2;">SorteosOficiales</span>
+            <span class="discord-bot">BOT</span>
+            <span style="color: #6c6c8a; font-size: 0.8rem; margin-left: 8px;">Hoy a las 15:42</span>
+          </div>
+        </div>
+        <p>🎉 <strong>¡ATENCIÓN MIEMBRO DEL SERVIDOR!</strong> 🎉</p>
+        <p style="margin-top: 10px;">Has sido seleccionado como el <strong style="color: #facc15;">GANADOR #3847</strong> del sorteo semanal.</p>
+        <p style="margin-top: 10px;">💰 <strong>Premio: $100 USD en Tarjeta de Regalo</strong> 💰</p>
+        <p style="margin-top: 15px;">👉 Para reclamar tu premio, haz clic aquí:</p>
+        <div class="fake-url">
+          🔗 https://www.disc<span style="color: #ef4444;">0</span>rd-gift.click/verify
+        </div>
+        <p style="margin-top: 15px; font-size: 0.85rem; color: #8a8a9e;">
+          *Escribe tu contraseña para verificar tu identidad*
+        </p>
+      </div>
+
+      <!-- Cajetín con halo pulsante -->
+      <div class="glowing-question">
+        <p style="color: #5865f2; font-weight: bold; margin-bottom: 10px;">⚠️ ¿QUÉ DEBERÍAS HACER? ⚠️</p>
+        <p style="font-size: 0.9rem;">Elige la opción correcta para proteger tu cuenta</p>
+      </div>
+    </div>
+
+    <!-- Botones de decisión -->
+    <div class="choice-buttons">
+      <button class="decision-btn" id="badChoiceBtn">🔗 Hacer clic y poner mi contraseña</button>
+      <button class="decision-btn" id="goodChoiceBtn">🛡️ Reportar, bloquear y NO hacer clic</button>
+    </div>
+  </div>
+</section>
+
+<!-- MODALES -->
+<div class="overlay" id="overlay"></div>
+
+<!-- MODAL ÉXITO (estilo oscuro como los carteles originales) -->
+<div class="modal success-modal-custom" id="successModal">
+  <div class="modal-icon">🛡️✨🕵️</div>
+  <h2>🎉 ¡Excelente decisión, detective!</h2>
+  <p>Has identificado correctamente la estafa y NO caíste en la trampa.</p>
+  <div class="modal-tips">
+    <p>🔐 <strong>Consejos importantes para Discord:</strong></p>
+    <ul>
+      <li>Discord NUNCA pide tu contraseña por mensaje</li>
+      <li>Revisa bien las URLs: "disc0rd" con 0 es falso</li>
+      <li>Activa la verificación en dos pasos en Discord</li>
+      <li>Reporta mensajes sospechosos al administrador</li>
+    </ul>
+  </div>
+  <p class="points-add"><strong>+100 puntos</strong> por proteger tu cuenta.</p>
+  <button class="modal-button" id="continueBtn">🏆 Siguiente misión</button>
+</div>
+
+<!-- MODAL ERROR (estilo oscuro con calavera) -->
+<div class="modal error-modal-custom" id="errorModal">
+  <div class="modal-icon">💀⚠️💀</div>
+  <h2>⚠️ ¡Cuidado! Has caído en la trampa</h2>
+  <p>Al hacer clic y poner tu contraseña, los hackers pueden robar tu cuenta.</p>
+  <div class="modal-tips">
+    <p>🔐 <strong>Qué debes hacer si ya cometiste este error:</strong></p>
+    <ul>
+      <li>Cambia tu contraseña INMEDIATAMENTE</li>
+      <li>Activa la verificación en dos pasos</li>
+      <li>Revisa los dispositivos conectados a tu cuenta</li>
+      <li>Avísale a tus amigos que no abran mensajes sospechosos</li>
+    </ul>
+  </div>
+  <button class="modal-button" id="closeErrorBtn">🔍 Intentar de nuevo</button>
+</div>
+
+<script src="M04.js"></script>
+</body>
+</html>

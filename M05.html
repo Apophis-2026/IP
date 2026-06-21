@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Misión 5 | Minecraft: Mods Infectados</title>
+  <link rel="stylesheet" href="base.css" />
+  <link rel="stylesheet" href="M05.css" />
+</head>
+<body>
+
+<div class="score-bar">
+  <span>🏆</span> Puntos: <span id="scoreValue">0</span>
+</div>
+
+<!-- PANTALLA 1: EXPLICACIÓN -->
+<section class="screen active" id="missionIntroScreen">
+  <div class="panel">
+    <div style="font-size: 4rem;">⛏️🐉</div>
+    <h2 class="mission-title">Misión 5: Mods Infectados</h2>
+    <p class="mission-text">
+      Quieres instalar un mod de dragones para Minecraft y encuentras una página que ofrece descarga gratis.
+    </p>
+    <div class="question-highlight">
+      🐉 "¡Mod de Dragones Legendarios! Descarga gratis - 100,000 descargas"
+    </div>
+    <button class="minecraft-btn" id="seePageBtn">VER PÁGINA SOSPECHOSA</button>
+  </div>
+</section>
+
+<!-- PANTALLA 2: PÁGINA FALSA DE DESCARGA -->
+<section class="screen" id="downloadPageScreen">
+  <div class="panel" style="max-width: 700px;">
+    <div class="fake-download-page">
+      
+      <div class="mod-title">
+        🐉 DRAGONES LEGENDARIOS 🐉
+      </div>
+      
+      <p style="text-align: center; color: #8a8a9e;">Versión 2.3 | Compatible con Minecraft 1.20</p>
+      
+      <div style="text-align: center; margin: 20px 0;">
+        <span style="background: #227722; padding: 8px 16px; border-radius: 20px; font-size: 0.9rem;">✓ 100,000 descargas</span>
+        <span style="background: #227722; padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; margin-left: 10px;">✓ 4.8 estrellas</span>
+      </div>
+
+      <!-- URL sospechosa (solo la información, sin pistas) -->
+      <div class="info-box">
+        <p>🔗 <strong>Enlace de descarga:</strong></p>
+        <div class="url-suspicious">
+          https://www.minecraft-modz.xyz/dragones-gratis/download.exe
+        </div>
+      </div>
+
+      <!-- Cajetín con halo pulsante para la decisión -->
+      <div class="glowing-question">
+        <p style="color: #44aa44; font-weight: bold; margin-bottom: 10px;">⚠️ ¿QUÉ DEBERÍAS HACER? ⚠️</p>
+        <p style="font-size: 0.9rem;">Elige la opción correcta para proteger tu computadora</p>
+      </div>
+    </div>
+
+    <!-- Botones de decisión -->
+    <div class="choice-buttons">
+      <button class="decision-btn" id="badChoiceBtn">⬇️ Descargar e instalar el archivo</button>
+      <button class="decision-btn" id="goodChoiceBtn">🛡️ Buscar el mod en CurseForge oficial</button>
+    </div>
+  </div>
+</section>
+
+<!-- MODALES -->
+<div class="overlay" id="overlay"></div>
+
+<!-- MODAL ÉXITO (estilo oscuro) -->
+<div class="modal success-modal-custom" id="successModal">
+  <div class="modal-icon">🛡️✨⛏️</div>
+  <h2>🎉 ¡Excelente decisión, detective!</h2>
+  <p>Has identificado correctamente la página falsa y NO descargaste el virus.</p>
+  <div class="modal-tips">
+    <p>🔐 <strong>Consejos importantes para Minecraft:</strong></p>
+    <ul>
+      <li>Descarga mods SOLO de CurseForge o Modrinth (sitios oficiales)</li>
+      <li>Los mods verdaderos terminan en <strong>.jar</strong>, NO en .exe</li>
+      <li>NUNCA desactives el antivirus para instalar algo</li>
+      <li>Si una página tiene muchos anuncios, probablemente es falsa</li>
+    </ul>
+  </div>
+  <p class="points-add"><strong>+100 puntos</strong> por proteger tu computadora.</p>
+  <button class="modal-button" id="continueBtn">🏆 Ver resultado final</button>
+</div>
+
+<!-- MODAL ERROR (estilo oscuro con calavera) -->
+<div class="modal error-modal-custom" id="errorModal">
+  <div class="modal-icon">💀⚠️💀</div>
+  <h2>⚠️ ¡Cuidado! Has descargado un virus</h2>
+  <p>Ese archivo .exe puede robar tu cuenta de Minecraft o dañar tu computadora.</p>
+  <div class="modal-tips">
+    <p>🔐 <strong>Qué debes hacer si cometiste este error:</strong></p>
+    <ul>
+      <li>Ejecuta un análisis completo con tu antivirus</li>
+      <li>Cambia la contraseña de tu cuenta de Minecraft</li>
+      <li>Activa la verificación en dos pasos</li>
+      <li>NO vuelvas a descargar de páginas sospechosas</li>
+    </ul>
+  </div>
+  <p class="points-add">💡 <strong>Recuerda:</strong> Los mods seguros terminan en .jar</p>
+  <button class="modal-button" id="closeErrorBtn">🔍 Intentar de nuevo</button>
+</div>
+
+<script src="M05.js"></script>
+</body>
+</html>

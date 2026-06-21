@@ -1,0 +1,139 @@
+/* ============================================
+   MISIÓN 5: MINECRAFT - MODS INFECTADOS
+   ============================================ */
+
+/* ---------- BOTÓN PRINCIPAL ---------- */
+.minecraft-btn {
+  background: linear-gradient(135deg, #facc15, #eab308);
+  color: #1e3a8a;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 18px 40px;
+  margin-top: 40px;
+  border: none;
+  border-radius: 60px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(250,204,21,0.5);
+}
+
+.minecraft-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 35px rgba(250,204,21,0.8);
+}
+
+/* ---------- TARJETA DE LA PÁGINA FALSA ---------- */
+.fake-download-page {
+  background: #1a1a2e;
+  border-radius: 20px;
+  padding: 25px;
+  text-align: left;
+  border: 2px solid #44aa44;
+}
+
+.mod-title {
+  font-size: 1.8rem;
+  color: #44aa44;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Caja de información (solo muestra los datos, sin pistas) */
+.info-box {
+  background: #0f0f1a;
+  border-radius: 16px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.url-suspicious {
+  background: #1a1a2a;
+  padding: 12px;
+  border-radius: 10px;
+  font-family: monospace;
+  word-break: break-all;
+  margin-top: 10px;
+  color: #ef4444;
+}
+
+/* ---------- CAJETÍN CON HALO PULSANTE ---------- */
+.glowing-question {
+  background: #1a1a2a;
+  border: 2px solid #44aa44;
+  border-radius: 18px;
+  padding: 20px;
+  margin-top: 20px;
+  text-align: center;
+  animation: pulseGlowMinecraft 1.5s ease-in-out infinite;
+}
+
+@keyframes pulseGlowMinecraft {
+  0% {
+    box-shadow: 0 0 0 0 rgba(68,170,68,0.4);
+    border-color: #44aa44;
+  }
+  50% {
+    box-shadow: 0 0 20px 8px rgba(68,170,68,0.6);
+    border-color: #66cc66;
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(68,170,68,0.4);
+    border-color: #44aa44;
+  }
+}
+
+/* ---------- BOTONES DE DECISIÓN (ESTILO NEUTRO) ---------- */
+.choice-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.decision-btn {
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 60px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+/* Estado SIN SELECCIONAR */
+.decision-btn:not(.selected) {
+  background: #38bdf8;
+  color: black;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Estado SELECCIONADO */
+.decision-btn.selected {
+  background: #3b4261;
+  color: black;
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(20,220,195,0.8);
+}
+
+/* Efecto hover */
+.decision-btn:not(.selected):hover {
+  background: #1a73e8;
+  transform: scale(1.02);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 600px) {
+  .minecraft-btn {
+    font-size: 1.2rem;
+    padding: 14px 25px;
+  }
+  .decision-btn {
+    padding: 12px 20px;
+    font-size: 0.95rem;
+  }
+  .mod-title {
+    font-size: 1.4rem;
+  }
+}

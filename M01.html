@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Misión 1 | Facebook Falso</title>
+  <link rel="stylesheet" href="base.css" />
+  <link rel="stylesheet" href="M01.css" />
+  <style>
+    /* Botón específico para Misión 1 */
+    .investigate-btn {
+      background: linear-gradient(135deg, #facc15, #eab308);
+      color: #1e3a8a;
+      font-size: 1.5rem;
+      font-weight: bold;
+      padding: 18px 40px;
+      margin-top: 40px;
+      border: none;
+      border-radius: 60px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px rgba(250,204,21,0.5);
+    }
+
+    .investigate-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 35px rgba(250,204,21,0.8);
+    }
+
+    .investigate-btn::before {
+      content: "🔍 ";
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+<div class="score-bar">
+  <span>🏆</span> Puntos: <span id="scoreValue">0</span>
+</div>
+
+<!-- Pantalla de explicación -->
+<section class="screen active" id="missionScreen">
+  <div class="panel">
+    <h2 class="mission-title">🎯 Misión 1: El Facebook Falso</h2>
+    <p class="mission-text">
+      Un hacker ha creado una copia falsa de Facebook para robar contraseñas.<br><br>
+      Revisa la barra de direcciones (URL) y encuentra la pista sospechosa.
+    </p>
+    <div class="question-highlight">
+      🔍 ¿Qué parte de la dirección web parece estar mal escrita o es falsa?
+    </div>
+    <button class="investigate-btn" id="investigateBtn">INVESTIGAR</button>
+  </div>
+</section>
+
+<!-- Pantalla del juego -->
+<section class="screen" id="gameScreen">
+  <div class="facebook-scene">
+    <div class="browser-top">
+      <div class="dot red"></div>
+      <div class="dot yellow"></div>
+      <div class="dot green"></div>
+      <div class="url-bar" id="urlBar">
+        https://www.faceb<span class="fake-part" id="fakePart">00</span>k-login.com
+      </div>
+    </div>
+    <div class="facebook-layout">
+      <div class="facebook-left">
+        <div class="facebook-logo">facebook</div>
+        <div class="facebook-text">Facebook te ayuda a comunicarte y compartir con las personas que forman parte de tu vida.</div>
+      </div>
+      <div class="login-card">
+        <input class="input" type="text" placeholder="Correo electrónico o número de teléfono" />
+        <input class="input" type="password" placeholder="Contraseña" />
+        <button class="login-btn">Iniciar sesión</button>
+        <div class="forgot">¿Olvidaste tu contraseña?</div>
+        <div class="divider"></div>
+        <button class="create-btn">Crear cuenta nueva</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERLAY (IMPORTANTE: debe estar antes de los modales) -->
+<div class="overlay" id="overlay"></div>
+
+<!-- MODAL ÉXITO (estilo oscuro) -->
+<div class="modal success-modal-custom" id="successModal">
+  <div class="modal-icon">✨🕵️</div>
+  <h2>🎉 ¡Excelente detective!</h2>
+  <p>Has identificado correctamente la URL sospechosa: <strong>"faceb00k"</strong> en lugar de "facebook".</p>
+  <div class="modal-tips">
+    <p>🔐 <strong>Consejos importantes:</strong></p>
+    <ul>
+      <li>Siempre revisa que la dirección web esté bien escrita</li>
+      <li>Los hackers cambian letras por números (0 por o) para engañarte</li>
+      <li>Nunca introduzcas tu contraseña en páginas con URLs sospechosas</li>
+      <li>Verifica el candado 🔒 en la barra de direcciones</li>
+    </ul>
+  </div>
+  <p class="points-add"> <strong>+50 puntos</strong> por tu agudeza visual.</p>
+  <button class="modal-button" id="continueBtn">▶ Continuar a la Misión 2</button>
+</div>
+
+<!-- MODAL ERROR (estilo oscuro) -->
+<div class="modal error-modal-custom" id="errorModal">
+  <div class="modal-icon">⚠️🔍⚠️</div>
+  <h2>⚠️ Sigue investigando</h2>
+  <p>Observa la barra de direcciones. ¿Notas algo extraño en <strong>"faceb00k"</strong>?</p>
+  <div class="modal-tips">
+    <p>🔐 <strong>Pistas:</strong></p>
+    <ul>
+      <li>Un sitio legítimo no tiene errores de escritura</li>
+      <li>Facebook real se escribe con "o", no con "00"</li>
+      <li>Revisa la URL completa: termina en .com</li>
+    </ul>
+  </div>
+  <button class="modal-button" id="closeErrorBtn">🔍 Seguir investigando</button>
+</div>
+
+<script src="M01.js"></script>
+</body>
+</html>
