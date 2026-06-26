@@ -17,21 +17,22 @@
       min-height: 100vh;
       margin: 0;
       padding: 0;
+      background: #0a0a0a;
+      overflow: hidden;
     }
 
     body {
-      background: linear-gradient(135deg, #0a0a0a, #1a0000);
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 15px;
       touch-action: manipulation;
       height: 100vh;
-      overflow: hidden;
+      position: relative;
     }
 
     /* ============================================
-       PANTALLA 1: Falso virus (CORREGIDA)
+       PANTALLA 1: Falso virus
        ============================================ */
     .screen {
       width: 100%;
@@ -43,7 +44,6 @@
       border: 3px solid #ef4444;
       box-shadow: 0 0 50px rgba(239,68,68,0.3);
       animation: pulse 0.8s infinite;
-      /* CENTRADO PERFECTO */
       position: absolute;
       top: 50%;
       left: 50%;
@@ -163,7 +163,6 @@
       text-align: center;
       border: 2px solid #38bdf8;
       display: none;
-      /* CENTRADO PERFECTO */
       position: absolute;
       top: 50%;
       left: 50%;
@@ -205,7 +204,6 @@
       margin: 10px 0;
     }
 
-    /* CONTENEDOR DE 2 COLUMNAS */
     .info-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -294,43 +292,163 @@
       }
     }
 
-    .loading {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      border: 3px solid rgba(255,255,255,0.3);
-      border-radius: 50%;
-      border-top-color: #fff;
-      animation: spin 1s ease-in-out infinite;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    .share-btn {
-      background: transparent;
-      color: #38bdf8;
-      border: 1px solid #38bdf8;
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      cursor: pointer;
-      transition: 0.2s;
-      margin-top: 10px;
-    }
-
-    .share-btn:hover {
-      background: #38bdf8;
-      color: #0f172a;
-    }
-
     .btn-group {
       display: flex;
       gap: 12px;
       justify-content: center;
       flex-wrap: wrap;
       margin-top: 15px;
+    }
+
+    /* ============================================
+       CARTEL TECNOLÓGICO NEGRO CON NEÓN AZUL
+       - CORREGIDO: usa display:flex con centrado total
+       ============================================ */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 20px;
+      /* Aseguramos que el overlay cubra toda la pantalla */
+      margin: 0;
+      border: none;
+      outline: none;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-card {
+      background: #0a0a0a;
+      border: 2px solid #00d4ff;
+      border-radius: 28px;
+      padding: 30px 28px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 0 60px rgba(0, 212, 255, 0.25), inset 0 0 40px rgba(0, 212, 255, 0.05);
+      text-align: center;
+      animation: neonPulse 2s infinite alternate;
+      position: relative;
+      /* Centrado perfecto gracias al flex del overlay */
+      margin: auto;
+    }
+
+    @keyframes neonPulse {
+      0% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.2), inset 0 0 20px rgba(0, 212, 255, 0.02); }
+      100% { box-shadow: 0 0 60px rgba(0, 212, 255, 0.5), inset 0 0 40px rgba(0, 212, 255, 0.08); }
+    }
+
+    .modal-card .modal-icon {
+      font-size: clamp(2.2rem, 10vw, 3.5rem);
+      margin-bottom: 10px;
+      filter: drop-shadow(0 0 12px #00d4ff);
+    }
+
+    .modal-card h3 {
+      color: #00d4ff;
+      font-size: clamp(1.4rem, 5vw, 2rem);
+      margin-bottom: 12px;
+      letter-spacing: 2px;
+      text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+    }
+
+    .modal-card .modal-sub {
+      color: #94a3b8;
+      font-size: clamp(0.85rem, 2.8vw, 1rem);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      background: #111;
+      padding: 14px;
+      border-radius: 12px;
+      border-left: 3px solid #00d4ff;
+      text-align: left;
+    }
+
+    .modal-card .modal-sub strong {
+      color: #38bdf8;
+    }
+
+    .modal-card .modal-features {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 16px 0;
+      text-align: left;
+    }
+
+    .modal-card .modal-features div {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #cbd5e1;
+      font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+      background: #111;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid #1e3a5f;
+    }
+
+    .modal-card .modal-features div span {
+      color: #00d4ff;
+      font-size: 1.2rem;
+      min-width: 28px;
+    }
+
+    .modal-close-btn {
+      background: transparent;
+      border: 1.5px solid #00d4ff;
+      color: #00d4ff;
+      padding: 12px 32px;
+      border-radius: 40px;
+      font-size: clamp(0.9rem, 3vw, 1rem);
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 10px;
+      touch-action: manipulation;
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+    }
+
+    .modal-close-btn:hover {
+      background: #00d4ff;
+      color: #0a0a0a;
+      box-shadow: 0 0 40px rgba(0, 212, 255, 0.4);
+    }
+
+    .modal-close-btn:active {
+      transform: scale(0.95);
+    }
+
+    /* Línea decorativa neón */
+    .modal-card .neon-line {
+      width: 70%;
+      height: 2px;
+      margin: 12px auto;
+      background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+      opacity: 0.6;
+    }
+
+    /* ============================================
+       RESPONSIVE EXTRA
+       ============================================ */
+    @media (max-width: 480px) {
+      .modal-card {
+        padding: 24px 18px;
+      }
+      .modal-card .modal-features div {
+        padding: 8px 12px;
+        gap: 8px;
+      }
     }
   </style>
 </head>
@@ -371,7 +489,6 @@
     Esto es una demostración de cómo los ciberdelincuentes intentan asustarte para que pagues.
   </p>
 
-  <!-- CONTENEDOR DE 2 COLUMNAS -->
   <div class="info-grid">
     <div class="info-box">
       <p>📚 ¿Qué acabas de experimentar?</p>
@@ -405,7 +522,41 @@
 
   <div class="btn-group">
     <button class="invite-btn" id="inviteBtn">🎮 Conocer el juego</button>
-    <button class="share-btn" id="shareBtn">📤 Compartir</button>
+    <!-- Botón compartir ELIMINADO -->
+  </div>
+</div>
+
+<!-- ============================================
+     CARTEL TECNOLÓGICO (MODAL) – NEGRO + NEÓN AZUL
+     ============================================ -->
+<div class="modal-overlay" id="techModal">
+  <div class="modal-card">
+    <div class="modal-icon">🕹️⚡</div>
+    <h3>CYBER DETECTIVE</h3>
+    <div class="neon-line"></div>
+    <div class="modal-sub">
+      <strong>  El juego que te enseña a defenderte</strong><br>
+      Aprende a identificar estafas digitales.
+      <span style="display:block; margin-top:8px; color:#38bdf8;">
+        ⏳ Duración: 15 min · Edad: 10-15 años
+      </span>
+    </div>
+
+    <div class="modal-features">
+      <div><span>🔍</span> Simulaciones de ataques reales</div>
+      <div><span>🛡️</span> Estrategias de defensa digital</div>
+      <div><span>🏆</span> Retos y recompensas</div>
+      <div><span>📱</span> Aprendizaje gamificado</div>
+    </div>
+
+    <div style="color: #00d4ff; font-size: 0.85rem; margin: 8px 0; letter-spacing: 1px;">
+      ── ⋆⋅☆⋅⋆ ──
+    </div>
+
+    <p style="color: #94a3b8; font-size: clamp(1.5rem, 2vw, 0.8rem); margin: 6px 0 12px 0;">
+       Búscanos como: <strong>SAFE SPACE</strong>
+    </p>
+    
   </div>
 </div>
 
@@ -417,49 +568,46 @@
   const revealScreen = document.getElementById('revealScreen');
   const scaredBtn = document.getElementById('scaredBtn');
   const inviteBtn = document.getElementById('inviteBtn');
-  const shareBtn = document.getElementById('shareBtn');
+  const techModal = document.getElementById('techModal');
+  const closeModalBtn = document.getElementById('closeModalBtn');
 
   // ============================================
   // 2. BOTÓN ROJO - PASA A PANTALLA AZUL
   // ============================================
   scaredBtn.addEventListener('click', function(e) {
-    console.log('Botón rojo presionado'); // Para depuración
     scamScreen.style.display = 'none';
     revealScreen.style.display = 'block';
     if (navigator.vibrate) navigator.vibrate(50);
   });
 
   // ============================================
-  // 3. BOTÓN DE INVITACIÓN
+  // 3. BOTÓN "CONOCER EL JUEGO" → ABRE MODAL
   // ============================================
   inviteBtn.addEventListener('click', function(e) {
-    const originalText = inviteBtn.innerHTML;
-    inviteBtn.innerHTML = '<span class="loading"></span> Preparando...';
-    inviteBtn.disabled = true;
-    
-    setTimeout(() => {
-      alert('🎯 ¡Te esperamos en nuestro módulo!\n\n🔍 Descubre "Cyber Detective Academy"\n🛡️ Aprende a identificar estafas digitales\n🎮 Juego interactivo para toda la familia\n\n📍 Ubícanos en la feria escolar\n📅 No te pierdas esta experiencia única!');
-      inviteBtn.innerHTML = originalText;
-      inviteBtn.disabled = false;
-    }, 800);
+    techModal.classList.add('active');
+    if (navigator.vibrate) navigator.vibrate(30);
   });
 
   // ============================================
-  // 4. BOTÓN DE COMPARTIR
+  // 4. CERRAR MODAL
   // ============================================
-  shareBtn.addEventListener('click', function() {
-    if (navigator.share) {
-      navigator.share({
-        title: '⚠️ ¿Sabías que esto es una estafa?',
-        text: 'Aprende a protegerte de ciberataques con Cyber Detective Academy 🕵️',
-        url: window.location.href
-      }).catch(() => {});
-    } else {
-      navigator.clipboard.writeText(window.location.href).then(() => {
-        alert('📋 ¡Enlace copiado al portapapeles!\nCompártelo con tus amigos y familiares.');
-      }).catch(() => {
-        alert('📱 Comparte esta URL con tus amigos:\n' + window.location.href);
-      });
+  function closeModal() {
+    techModal.classList.remove('active');
+  }
+
+  closeModalBtn.addEventListener('click', closeModal);
+
+  // Cerrar al hacer clic fuera del contenido (overlay)
+  techModal.addEventListener('click', function(e) {
+    if (e.target === techModal) {
+      closeModal();
+    }
+  });
+
+  // Cerrar con tecla ESC
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && techModal.classList.contains('active')) {
+      closeModal();
     }
   });
 
