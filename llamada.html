@@ -19,12 +19,16 @@
       padding: 0;
       background: #0a0a0a;
       overflow: hidden;
+      position: fixed;
+      /* Evita cualquier scroll en el body */
+      top: 0;
+      left: 0;
     }
 
     body {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     /* ============================================
@@ -40,21 +44,28 @@
       border: 3px solid #ef4444;
       box-shadow: 0 0 50px rgba(239,68,68,0.3);
       animation: pulse 0.8s infinite;
-      /* Centrado absoluto clásico */
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      max-height: 90vh;
+      max-height: 92vh;
       overflow-y: auto;
+      /* Scroll suave para contenido largo */
+      scrollbar-width: thin;
+      scrollbar-color: #ef4444 transparent;
+    }
+
+    .screen::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .screen::-webkit-scrollbar-thumb {
+      background: #ef4444;
+      border-radius: 4px;
     }
 
     @media (max-width: 480px) {
       .screen {
-        padding: 20px 15px;
+        padding: 18px 14px;
         border-radius: 16px;
         max-width: 95%;
-        max-height: 85vh;
+        max-height: 90vh;
         width: 95%;
       }
     }
@@ -90,6 +101,8 @@
     .warning-text small {
       font-size: 0.7rem;
       color: #94a3b8;
+      display: block;
+      margin-top: 4px;
     }
 
     .bitcoin-address {
@@ -137,6 +150,10 @@
       min-height: 44px;
       min-width: 200px;
       display: block;
+      position: sticky;
+      bottom: 0;
+      /* El botón se mantiene visible al hacer scroll */
+      z-index: 10;
     }
 
     @media (max-width: 480px) {
@@ -167,27 +184,33 @@
       text-align: center;
       border: 2px solid #38bdf8;
       display: none;
-      /* Centrado absoluto clásico */
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      max-height: 90vh;
+      max-height: 92vh;
       overflow-y: auto;
       animation: fadeIn 0.5s ease;
+      scrollbar-width: thin;
+      scrollbar-color: #38bdf8 transparent;
+    }
+
+    .reveal-screen::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .reveal-screen::-webkit-scrollbar-thumb {
+      background: #38bdf8;
+      border-radius: 4px;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translate(-50%, -50%) scale(0.95); }
-      to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     @media (max-width: 480px) {
       .reveal-screen {
-        padding: 20px 15px;
+        padding: 18px 14px;
         border-radius: 16px;
         max-width: 95%;
-        max-height: 85vh;
+        max-height: 90vh;
         width: 95%;
       }
     }
@@ -263,7 +286,6 @@
       margin: 10px 0;
     }
 
-    /* BOTÓN DE INVITACIÓN MEJORADO */
     .invite-btn {
       background: linear-gradient(135deg, #facc15, #eab308);
       color: #1e3a8a;
@@ -280,6 +302,9 @@
       min-width: 200px;
       box-shadow: 0 4px 15px rgba(250,204,21,0.3);
       display: inline-block;
+      position: sticky;
+      bottom: 0;
+      z-index: 10;
     }
 
     @media (max-width: 480px) {
@@ -337,15 +362,26 @@
       background: #0a0a0a;
       border: 2px solid #00d4ff;
       border-radius: 28px;
-      padding: 30px 28px;
+      padding: 25px 22px;
       max-width: 500px;
       width: 100%;
       box-shadow: 0 0 60px rgba(0, 212, 255, 0.25), inset 0 0 40px rgba(0, 212, 255, 0.05);
       text-align: center;
       animation: neonPulse 2s infinite alternate;
       margin: auto;
-      max-height: 85vh;
+      max-height: 90vh;
       overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #00d4ff transparent;
+    }
+
+    .modal-card::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .modal-card::-webkit-scrollbar-thumb {
+      background: #00d4ff;
+      border-radius: 4px;
     }
 
     @keyframes neonPulse {
@@ -424,12 +460,25 @@
       box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
       min-height: 44px;
       min-width: 160px;
+      position: sticky;
+      bottom: 0;
+      z-index: 10;
+      background: rgba(0, 0, 0, 0.8);
     }
 
     @media (max-width: 480px) {
       .modal-close-btn {
         min-width: 140px;
         padding: 10px 20px;
+        font-size: 0.85rem;
+      }
+      .modal-card {
+        padding: 20px 16px;
+        max-height: 88vh;
+      }
+      .modal-card .modal-features div {
+        padding: 8px 12px;
+        gap: 8px;
       }
     }
 
@@ -451,14 +500,42 @@
       opacity: 0.6;
     }
 
-    @media (max-width: 480px) {
-      .modal-card {
-        padding: 24px 18px;
-        max-height: 80vh;
+    /* Ajuste extra para pantallas muy pequeñas */
+    @media (max-height: 700px) {
+      .screen, .reveal-screen, .modal-card {
+        padding: 15px 12px;
       }
-      .modal-card .modal-features div {
+      .hacker-icon, .good-icon, .modal-icon {
+        font-size: 1.8rem;
+        margin-bottom: 6px;
+      }
+      h1, .reveal-screen h2, .modal-card h3 {
+        font-size: 1rem;
+        margin-bottom: 8px;
+      }
+      .warning-text, .modal-sub {
+        padding: 8px;
+        margin: 8px 0;
+      }
+      .bitcoin-address {
+        padding: 8px;
+        margin: 8px 0;
+      }
+      .timer {
+        margin: 8px 0;
+        font-size: 1.2rem;
+      }
+      .info-box {
         padding: 8px 12px;
-        gap: 8px;
+      }
+      .modal-features div {
+        padding: 6px 10px;
+      }
+      .btn, .invite-btn, .modal-close-btn {
+        padding: 10px 16px;
+        min-height: 36px;
+        min-width: 140px;
+        font-size: 0.8rem;
       }
     }
   </style>
@@ -565,7 +642,7 @@
       Búscanos como: <strong style="color: #38bdf8;">SAFE SPACE</strong>
     </p>
     
-    <button class="modal-close-btn" id="closeModalBtn">✕ CERRAR</button>
+        <!-- <button class="modal-close-btn" id="closeModalBtn">✕ CERRAR</button> -->
   </div>
 </div>
 
