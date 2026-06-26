@@ -13,8 +13,8 @@
     }
 
     html, body {
+      width: 100%;
       height: 100%;
-      min-height: 100vh;
       margin: 0;
       padding: 0;
       background: #0a0a0a;
@@ -22,20 +22,19 @@
     }
 
     body {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 15px;
-      touch-action: manipulation;
-      height: 100vh;
-      position: relative;
     }
 
     /* ============================================
        PANTALLA 1: Falso virus
        ============================================ */
     .screen {
-      width: 100%;
+      width: 90%;
       max-width: 480px;
       background: #0a0a0a;
       border-radius: 24px;
@@ -44,10 +43,8 @@
       border: 3px solid #ef4444;
       box-shadow: 0 0 50px rgba(239,68,68,0.3);
       animation: pulse 0.8s infinite;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      /* Centrado con flex del body */
+      margin: auto;
       max-height: 90vh;
       overflow-y: auto;
     }
@@ -58,6 +55,7 @@
         border-radius: 16px;
         max-width: 95%;
         max-height: 85vh;
+        width: 95%;
       }
     }
 
@@ -155,7 +153,7 @@
        PANTALLA 2: Revelación educativa (2 COLUMNAS)
        ============================================ */
     .reveal-screen {
-      width: 100%;
+      width: 90%;
       max-width: 600px;
       background: linear-gradient(135deg, #1e3a8a, #0f172a);
       border-radius: 24px;
@@ -163,18 +161,16 @@
       text-align: center;
       border: 2px solid #38bdf8;
       display: none;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      /* Centrado con flex del body */
+      margin: auto;
       max-height: 90vh;
       overflow-y: auto;
       animation: fadeIn 0.5s ease;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translate(-50%, -50%) scale(0.95); }
-      to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     @media (max-width: 480px) {
@@ -183,6 +179,7 @@
         border-radius: 16px;
         max-width: 95%;
         max-height: 85vh;
+        width: 95%;
       }
     }
 
@@ -302,7 +299,6 @@
 
     /* ============================================
        CARTEL TECNOLÓGICO NEGRO CON NEÓN AZUL
-       - CORREGIDO: usa display:flex con centrado total
        ============================================ */
     .modal-overlay {
       position: fixed;
@@ -318,7 +314,6 @@
       align-items: center;
       z-index: 9999;
       padding: 20px;
-      /* Aseguramos que el overlay cubra toda la pantalla */
       margin: 0;
       border: none;
       outline: none;
@@ -338,8 +333,6 @@
       box-shadow: 0 0 60px rgba(0, 212, 255, 0.25), inset 0 0 40px rgba(0, 212, 255, 0.05);
       text-align: center;
       animation: neonPulse 2s infinite alternate;
-      position: relative;
-      /* Centrado perfecto gracias al flex del overlay */
       margin: auto;
     }
 
@@ -429,7 +422,6 @@
       transform: scale(0.95);
     }
 
-    /* Línea decorativa neón */
     .modal-card .neon-line {
       width: 70%;
       height: 2px;
@@ -438,9 +430,6 @@
       opacity: 0.6;
     }
 
-    /* ============================================
-       RESPONSIVE EXTRA
-       ============================================ */
     @media (max-width: 480px) {
       .modal-card {
         padding: 24px 18px;
@@ -522,20 +511,17 @@
 
   <div class="btn-group">
     <button class="invite-btn" id="inviteBtn">🎮 Conocer el juego</button>
-    <!-- Botón compartir ELIMINADO -->
   </div>
 </div>
 
-<!-- ============================================
-     CARTEL TECNOLÓGICO (MODAL) – NEGRO + NEÓN AZUL
-     ============================================ -->
+<!-- CARTEL TECNOLÓGICO (MODAL) -->
 <div class="modal-overlay" id="techModal">
   <div class="modal-card">
     <div class="modal-icon">🕹️⚡</div>
     <h3>CYBER DETECTIVE</h3>
     <div class="neon-line"></div>
     <div class="modal-sub">
-      <strong>  El juego que te enseña a defenderte</strong><br>
+      <strong>El juego que te enseña a defenderte</strong><br>
       Aprende a identificar estafas digitales.
       <span style="display:block; margin-top:8px; color:#38bdf8;">
         ⏳ Duración: 15 min · Edad: 10-15 años
@@ -553,10 +539,11 @@
       ── ⋆⋅☆⋅⋆ ──
     </div>
 
-    <p style="color: #94a3b8; font-size: clamp(1.5rem, 2vw, 0.8rem); margin: 6px 0 12px 0;">
-       Búscanos como: <strong>SAFE SPACE</strong>
+    <p style="color: #94a3b8; font-size: clamp(0.8rem, 2vw, 1.2rem); margin: 6px 0 12px 0;">
+      Búscanos como: <strong>SAFE SPACE</strong>
     </p>
     
+    <button class="modal-close-btn" id="closeModalBtn">✕ CERRAR</button>
   </div>
 </div>
 
@@ -597,14 +584,12 @@
 
   closeModalBtn.addEventListener('click', closeModal);
 
-  // Cerrar al hacer clic fuera del contenido (overlay)
   techModal.addEventListener('click', function(e) {
     if (e.target === techModal) {
       closeModal();
     }
   });
 
-  // Cerrar con tecla ESC
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && techModal.classList.contains('active')) {
       closeModal();
@@ -612,7 +597,7 @@
   });
 
   // ============================================
-  // 5. DETECCIÓN DE MÓVIL (texto más claro)
+  // 5. DETECCIÓN DE MÓVIL
   // ============================================
   if (window.innerWidth <= 768) {
     const warningText = document.querySelector('.warning-text');
