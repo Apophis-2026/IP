@@ -20,7 +20,6 @@
       background: #0a0a0a;
       overflow: hidden;
       position: fixed;
-      /* Evita cualquier scroll en el body */
       top: 0;
       left: 0;
     }
@@ -46,7 +45,6 @@
       animation: pulse 0.8s infinite;
       max-height: 92vh;
       overflow-y: auto;
-      /* Scroll suave para contenido largo */
       scrollbar-width: thin;
       scrollbar-color: #ef4444 transparent;
     }
@@ -152,7 +150,6 @@
       display: block;
       position: sticky;
       bottom: 0;
-      /* El botón se mantiene visible al hacer scroll */
       z-index: 10;
     }
 
@@ -334,6 +331,7 @@
 
     /* ============================================
        CARTEL TECNOLÓGICO NEGRO CON NEÓN AZUL
+       - CORREGIDO: centrado absoluto clásico
        ============================================ */
     .modal-overlay {
       position: fixed;
@@ -345,17 +343,12 @@
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       display: none;
-      justify-content: center;
-      align-items: center;
       z-index: 9999;
-      padding: 20px;
-      margin: 0;
-      border: none;
-      outline: none;
+      /* Eliminamos flex para usar posicionamiento absoluto */
     }
 
     .modal-overlay.active {
-      display: flex;
+      display: block;
     }
 
     .modal-card {
@@ -364,15 +357,19 @@
       border-radius: 28px;
       padding: 25px 22px;
       max-width: 500px;
-      width: 100%;
+      width: 90%;
       box-shadow: 0 0 60px rgba(0, 212, 255, 0.25), inset 0 0 40px rgba(0, 212, 255, 0.05);
       text-align: center;
       animation: neonPulse 2s infinite alternate;
-      margin: auto;
       max-height: 90vh;
       overflow-y: auto;
       scrollbar-width: thin;
       scrollbar-color: #00d4ff transparent;
+      /* Centrado absoluto clásico - el mismo que funciona en las otras pantallas */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
 
     .modal-card::-webkit-scrollbar {
@@ -445,6 +442,7 @@
       min-width: 28px;
     }
 
+    /* Botón de cerrar - lo mantengo por si quieres volver a agregarlo */
     .modal-close-btn {
       background: transparent;
       border: 1.5px solid #00d4ff;
@@ -460,9 +458,7 @@
       box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
       min-height: 44px;
       min-width: 160px;
-      position: sticky;
-      bottom: 0;
-      z-index: 10;
+      display: inline-block;
       background: rgba(0, 0, 0, 0.8);
     }
 
@@ -475,6 +471,7 @@
       .modal-card {
         padding: 20px 16px;
         max-height: 88vh;
+        width: 92%;
       }
       .modal-card .modal-features div {
         padding: 8px 12px;
@@ -642,7 +639,8 @@
       Búscanos como: <strong style="color: #38bdf8;">SAFE SPACE</strong>
     </p>
     
-        <!-- <button class="modal-close-btn" id="closeModalBtn">✕ CERRAR</button> -->
+    <!-- Botón de cerrar (oculto pero disponible si quieres mostrarlo) -->
+    <button class="modal-close-btn" id="closeModalBtn" style="display: none;">✕ CERRAR</button>
   </div>
 </div>
 
@@ -675,25 +673,28 @@
   });
 
   // ============================================
-  // 4. CERRAR MODAL
+  // 4. CERRAR MODAL - FUNCIONALIDAD CON CLICK FUERA
   // ============================================
   function closeModal() {
     techModal.classList.remove('active');
   }
 
-  closeModalBtn.addEventListener('click', closeModal);
-
+  // Cerrar al hacer clic fuera del contenido (overlay)
   techModal.addEventListener('click', function(e) {
     if (e.target === techModal) {
       closeModal();
     }
   });
 
+  // Cerrar con tecla ESC
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && techModal.classList.contains('active')) {
       closeModal();
     }
   });
+
+  // Si en algún momento quieres mostrar el botón de cerrar, cambia el display a 'inline-block'
+  // closeModalBtn.addEventListener('click', closeModal);
 
   // ============================================
   // 5. DETECCIÓN DE MÓVIL
