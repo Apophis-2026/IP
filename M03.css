@@ -96,3 +96,28 @@
     padding: 15px;
   }
 }
+
+/* ============================================
+   MENSAJE DE PENALIZACIÓN
+   ============================================ */
+
+#penaltyMessage {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background: rgba(239, 68, 68, 0.95);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    z-index: 200;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border: 2px solid #ef4444;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    0% { transform: translateX(100px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}

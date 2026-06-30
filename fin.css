@@ -6,43 +6,61 @@
 .final-stats {
   background: #1e293b;
   border-radius: 24px;
-  padding: 40px;
-  margin: 30px 0;
+  padding: 20px 30px;  /* Reducido de 40px a 20px */
+  margin: 20px 0;      /* Reducido de 30px a 20px */
 }
 
 .final-score {
-  font-size: 4rem;
+  font-size: 2.5rem;   /* Reducido de 4rem a 2.5rem (1/4 más pequeño) */
   color: #fbbf24;
-  margin: 20px 0;
+  margin: 10px 0;      /* Reducido de 20px a 10px */
+}
+
+.final-stats p {
+  font-size: 0.95rem;  /* Reducido para que ocupe menos espacio */
+  margin: 5px 0;
+}
+
+.final-stats h2 {
+  font-size: 1.5rem;   /* Reducido */
+  margin: 5px 0;
 }
 
 .badge {
-  font-size: 5rem;
-  margin: 20px 0;
+  font-size: 3.5rem;   /* Reducido de 5rem a 3.5rem */
+  margin: 10px 0;      /* Reducido de 20px a 10px */
+}
+
+.mission-title {
+  font-size: 2.2rem;   /* Reducido de 3rem a 2.2rem */
+  margin-bottom: 15px; /* Reducido de 25px a 15px */
 }
 
 .missions-completed {
   background: #0f172a;
   border-radius: 16px;
-  padding: 20px;
-  margin: 20px 0;
+  padding: 15px 20px;  /* Reducido de 20px a 15px */
+  margin: 15px 0;      /* Reducido de 20px a 15px */
   text-align: left;
 }
 
 .missions-completed h3 {
   color: #38bdf8;
-  margin-bottom: 10px;
+  margin-bottom: 8px;  /* Reducido de 10px a 8px */
+  font-size: 1rem;     /* Reducido */
 }
 
 .missions-completed ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .missions-completed li {
-  padding: 8px 0;
+  padding: 5px 0;      /* Reducido de 8px a 5px */
   color: #cbd5e1;
   border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 0.85rem;  /* Reducido */
 }
 
 .missions-completed li:last-child {
@@ -53,18 +71,19 @@
 .tips-list {
   text-align: left;
   max-width: 550px;
-  margin: 30px auto;
+  margin: 20px auto;   /* Reducido de 30px a 20px */
 }
 
 .tips-list ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .tips-list li {
-  margin: 15px 0;
-  font-size: 1.1rem;
-  padding: 12px 18px;
+  margin: 8px 0;       /* Reducido de 15px a 8px */
+  font-size: 1rem;     /* Reducido de 1.1rem a 1rem */
+  padding: 10px 16px;  /* Reducido de 12px 18px a 10px 16px */
   background: #1e293b;
   border-radius: 12px;
   color: #cbd5e1;
@@ -78,21 +97,21 @@
 .grand-total {
   background: linear-gradient(135deg, #facc15, #eab308);
   color: #1e3a8a;
-  padding: 15px 25px;
+  padding: 12px 20px;  /* Reducido de 15px 25px a 12px 20px */
   border-radius: 40px;
-  margin: 20px 0;
+  margin: 15px 0;      /* Reducido de 20px a 15px */
   font-weight: bold;
-  font-size: 1.3rem;
+  font-size: 1.1rem;   /* Reducido de 1.3rem a 1.1rem */
 }
 
 /* ---------- BOTÓN GENÉRICO ---------- */
 .next-btn {
   background: linear-gradient(135deg, #facc15, #eab308);
   color: #1e3a8a;
-  font-size: 1.3rem;
+  font-size: 1.1rem;   /* Reducido de 1.3rem a 1.1rem */
   font-weight: bold;
-  padding: 16px 35px;
-  margin-top: 20px;
+  padding: 12px 28px;  /* Reducido de 16px 35px a 12px 28px */
+  margin-top: 15px;    /* Reducido de 20px a 15px */
   border: none;
   border-radius: 60px;
   cursor: pointer;
@@ -105,28 +124,46 @@
   box-shadow: 0 0 35px rgba(250,204,21,0.7);
 }
 
+/* ---------- PANEL ---------- */
+.panel {
+  padding: 30px 40px;  /* Reducido de 50px a 30px */
+}
+
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 600px) {
   .final-score {
-    font-size: 3rem;
+    font-size: 2rem;   /* Reducido de 3rem a 2rem */
   }
   
   .badge {
-    font-size: 3.5rem;
+    font-size: 2.5rem; /* Reducido de 3.5rem a 2.5rem */
   }
   
   .tips-list li {
-    font-size: 0.95rem;
-    padding: 10px 14px;
+    font-size: 0.9rem; /* Reducido de 0.95rem a 0.9rem */
+    padding: 8px 12px; /* Reducido */
   }
   
   .next-btn {
-    font-size: 1.1rem;
-    padding: 14px 25px;
+    font-size: 0.95rem; /* Reducido de 1.1rem a 0.95rem */
+    padding: 10px 20px; /* Reducido */
   }
   
   .grand-total {
-    font-size: 1rem;
-    padding: 12px 18px;
+    font-size: 0.9rem; /* Reducido de 1rem a 0.9rem */
+    padding: 10px 16px; /* Reducido */
+  }
+  
+  .mission-title {
+    font-size: 1.6rem; /* Reducido de 2.2rem a 1.6rem */
+  }
+  
+  .panel {
+    padding: 20px;
+  }
+  
+  .missions-completed li {
+    font-size: 0.75rem;
+    padding: 4px 0;
   }
 }

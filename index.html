@@ -1,70 +1,483 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Cyber Detective Academy | Inicio</title>
-  <link rel="stylesheet" href="base.css" />
-  <style>
-    /* Estilos específicos para el botón de inicio */
-    .start-btn {
-      background: linear-gradient(135deg, #38bdf8, #2563eb);
-      color: white;
-      font-size: 1.8rem;
-      font-weight: bold;
-      padding: 20px 50px;
-      margin-top: 50px;
-      border: none;
-      border-radius: 60px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 20px rgba(56,189,248,0.5);
-      animation: bounce 2s infinite;
-    }
-
-    .start-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 35px rgba(56,189,248,0.8);
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-
-    }
-
-    /* Icono del botón */
-    .start-btn::before {
-      content: "🕵️ ";
-      font-size: 2rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAFE SPACE - Agencia de Ciberseguridad</title>
+    
+    <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Fuente especial de Google para efecto metálico -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- ============================================================ -->
+    <!-- SECCIÓN 1: NAVEGACIÓN PRINCIPAL (Franja horizontal de iconos)  -->
+    <!-- ============================================================ -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <!-- Logo Safe Space (visible siempre) -->
+            <div class="nav-logo">
+                <span class="logo-text">SAFE</span><span class="logo-text-metal">SPACE</span>
+            </div>
+            
+            <!-- Menú de navegación -->
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="#mision" class="nav-link active" data-section="mision">
+                        <span class="nav-icon">🎯</span> Misión Central
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#juego" class="nav-link" data-section="juego">
+                        <span class="nav-icon">🕹️</span> Cyber detective Academy
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#archivo" class="nav-link" data-section="archivo">
+                        <span class="nav-icon">📂</span> Archivo del Enemigo
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#kit" class="nav-link" data-section="kit">
+                        <span class="nav-icon">🛡️</span> Kit de Supervivencia
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#escuadron" class="nav-link" data-section="escuadron">
+                        <span class="nav-icon">👥</span> El Escuadrón
+                    </a>
+                </li>
+            </ul>
+            
+            <!-- Botón para menú móvil (responsive) -->
+            <div class="nav-toggle" id="navToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
 
-<div class="score-bar">
-  <span>🏆</span> Puntos: <span id="scoreValue">0</span>
-</div>
+    <!-- ============================================================ -->
+    <!-- SECCIÓN 2: CONTENIDO PRINCIPAL                               -->
+    <!-- ============================================================ -->
+    <main class="main-content">
+        
+        <!-- ========================================================== -->
+        <!-- SECCIÓN: MISIÓN CENTRAL (Inicio / Home)                     -->
+        <!-- ========================================================== -->
+        <section id="mision" class="section active-section">
+            <div class="section-container">
+                <!-- Título principal con efecto metálico -->
+                <h1 class="main-title">
+                    <span class="title-line">BIENVENIDO A</span>
+                    <span class="title-line metal">SAFE SPACE</span>
+                </h1>
+                
+                <!-- Subtítulo / Eslogan -->
+                <p class="subtitle">
+                    <span class="typing-text" id="typingText"></span>
+                </p>
+                
+                <!-- Contador de puntos y medalla (conectado al juego) -->
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-icon">🏆</div>
+                        <div class="stat-info">
+                            <span class="stat-label">Puntos acumulados</span>
+                            <span class="stat-value" id="puntosTotales">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🎖️</div>
+                        <div class="stat-info">
+                            <span class="stat-label">Rango actual</span>
+                            <span class="stat-value" id="rangoActual">Agente Novato</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-info">
+                            <span class="stat-label">Misiones completadas</span>
+                            <span class="stat-value" id="misionesCompletadas">0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Frase de motivación -->
+                <div class="motivation-box">
+                    <p class="motivation-text">
+                        "La mejor defensa contra un ciberataque es un <strong>ciudadano digital consciente</strong>. 
+                        Tú eres el escudo."
+                    </p>
+                </div>
+                
+                <!-- Botón de acceso rápido al juego -->
+                <div class="cta-container">
+                    <a href="#juego" class="cta-button" id="btnIrAJuego">
+                        <span class="cta-icon">🕹️</span> 
+                        Iniciar Misión: Cyber detective
+                        <span class="cta-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </section>
 
-<section class="screen active" id="introScreen">
-  <div class="panel">
-    <h1 class="main-title">🕵️ Cyber Detective Academy</h1>
-    <p class="description">
-      Aprende a detectar páginas falsas, proteger tus datos personales y navegar seguro.<br><br>
-      Tu misión será descubrir cómo los ciberdelincuentes intentan engañarte.
-    </p>
-    <button class="start-btn" id="startBtn">COMENZAR AVENTURA</button>
-  </div>
-</section>
+        <!-- ========================================================== -->
+        <!-- SECCIÓN: JUEGO (Ciberdetectives)                            -->
+        <!-- ========================================================== -->
+        <section id="juego" class="section">
+            <div class="section-container">
+                <h2 class="section-title">
+                    <span class="title-icon">🕹️</span> 
+                    CYBER DETECTIVE ACADEMY
+                </h2>
+                <p class="section-description">
+                    Pon a prueba tus habilidades para detectar trampas digitales.
+                </p>
+                
+                <!-- Tarjeta de presentación del juego -->
+                <div class="game-card">
+                    <div class="game-preview">
+                        <div class="game-preview-icon">🔍</div>
+                        <div class="game-preview-text">
+                            <h3>¡Conviértete en un Cyber Detective!</h3>
+                            <p>Identifica páginas falsas, mensajes sospechosos y protege tus datos.</p>
+                            <ul class="game-features">
+                                <li>✅ 5 misiones de entrenamiento</li>
+                                <li>✅ Gana puntos por cada acierto</li>
+                                <li>✅ Desbloquea nuevos rangos</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Botón que llama al juego -->
+                    <div class="game-launch">
+                        <a href="juego.html" class="btn-jugar" id="btnLanzarJuego">
+                            <span class="btn-jugar-icon">▶</span>
+                            JUGAR AHORA
+                        </a>
+                        <p class="game-note">
+                            ⚡ Al hacer clic, abrirás el simulador de ciberataques
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Estadísticas rápidas del juego -->
+                <div class="game-stats">
+                    <div class="game-stat-item">
+                        <span class="game-stat-number">5</span>
+                        <span class="game-stat-label">Misiones</span>
+                    </div>
+                    <div class="game-stat-item">
+                        <span class="game-stat-number">∞</span>
+                        <span class="game-stat-label">Rejugabilidad</span>
+                    </div>
+                    <div class="game-stat-item">
+                        <span class="game-stat-number">10-15</span>
+                        <span class="game-stat-label">Edad recomendada</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<script>
-  let puntos = localStorage.getItem('cyberPoints') ? parseInt(localStorage.getItem('cyberPoints')) : 0;
-  document.getElementById('scoreValue').innerText = puntos;
+        <!-- ========================================================== -->
+        <!-- SECCIÓN: ARCHIVO DEL ENEMIGO (Tipos de ciberataque)        -->
+        <!-- ========================================================== -->
+        <section id="archivo" class="section">
+            <div class="section-container">
+                <h2 class="section-title">
+                    <span class="title-icon">📂</span> 
+                    ARCHIVO DEL ENEMIGO
+                </h2>
+                <p class="section-description">
+                    Conoce a tus adversarios digitales. Cada carta contiene información vital.
+                </p>
+                
+                <div class="cards-grid">
+                    <!-- Carta 1: Phishing -->
+                    <div class="enemy-card">
+                        <div class="card-header">
+                            <span class="card-emoji">🎣</span>
+                            <h3>Phishing</h3>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>¿Qué es?</strong> Correos o mensajes falsos que imitan a empresas reales para robar tus datos.</p>
+                            <p><strong>Señal de alerta:</strong> URL sospechosas (ej: faceb00k.com), ofertas demasiado buenas.</p>
+                            <div class="card-tip">💡 <strong>Protégete:</strong> Nunca hagas clic en enlaces sospechosos. Verifica la URL.</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Carta 2: Malware -->
+                    <div class="enemy-card">
+                        <div class="card-header">
+                            <span class="card-emoji">💀</span>
+                            <h3>Malware</h3>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>¿Qué es?</strong> Software malicioso que se instala sin tu permiso (virus, troyanos, ransomware).</p>
+                            <p><strong>Señal de alerta:</strong> Tu computadora se vuelve lenta, aparecen ventanas emergentes.</p>
+                            <div class="card-tip">💡 <strong>Protégete:</strong> No descargues archivos de fuentes desconocidas. Usa antivirus.</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Carta 3: Ingeniería Social -->
+                    <div class="enemy-card">
+                        <div class="card-header">
+                            <span class="card-emoji">🧠</span>
+                            <h3>Ingeniería Social</h3>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>¿Qué es?</strong> Manipulación psicológica para que reveles información confidencial.</p>
+                            <p><strong>Señal de alerta:</strong> Alguien te pide contraseñas, fotos o datos personales con urgencia.</p>
+                            <div class="card-tip">💡 <strong>Protégete:</strong> Desconfía de quien te pide información personal por chat o teléfono.</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Carta 4: Suplantación de identidad -->
+                    <div class="enemy-card">
+                        <div class="card-header">
+                            <span class="card-emoji">🎭</span>
+                            <h3>Suplantación de Identidad</h3>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>¿Qué es?</strong> Alguien usa tu nombre, fotos o datos para hacerse pasar por ti en redes.</p>
+                            <p><strong>Señal de alerta:</strong> Amigos te dicen que recibieron mensajes tuyos que no enviaste.</p>
+                            <div class="card-tip">💡 <strong>Protégete:</strong> Usa contraseñas fuertes y activa la verificación en dos pasos.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  document.getElementById('startBtn').addEventListener('click', () => {
-    window.location.href = 'M01.html';
-  });
-</script>
+        <!-- ========================================================== -->
+        <!-- SECCIÓN: KIT DE SUPERVIVENCIA (Qué hacer)                   -->
+        <!-- ========================================================== -->
+        <section id="kit" class="section">
+            <div class="section-container">
+                <h2 class="section-title">
+                    <span class="title-icon">🛡️</span> 
+                    KIT DE SUPERVIVENCIA DIGITAL
+                </h2>
+                <p class="section-description">
+                    Tu checklist personal para navegar seguro. ¡Marca cada ítem cuando lo domines!
+                </p>
+                
+                <div class="checklist-container">
+                    <div class="checklist-item">
+                        <input type="checkbox" id="check1" class="checklist-checkbox">
+                        <label for="check1" class="checklist-label">
+                            <span class="checklist-icon">🔐</span>
+                            <span class="checklist-text">
+                                <strong>Contraseñas seguras:</strong> Usa combinaciones de letras, números y símbolos. 
+                                No uses tu fecha de nacimiento.
+                            </span>
+                        </label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="check2" class="checklist-checkbox">
+                        <label for="check2" class="checklist-label">
+                            <span class="checklist-icon">🔑</span>
+                            <span class="checklist-text">
+                                <strong>Doble autenticación (2FA):</strong> Activa el segundo paso de verificación 
+                                en tus cuentas importantes.
+                            </span>
+                        </label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="check3" class="checklist-checkbox">
+                        <label for="check3" class="checklist-label">
+                            <span class="checklist-icon">👀</span>
+                            <span class="checklist-text">
+                                <strong>Verifica la URL:</strong> Siempre revisa la barra de direcciones. 
+                                Los atacantes usan letras parecidas (0 por o, 1 por l).
+                            </span>
+                        </label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="check4" class="checklist-checkbox">
+                        <label for="check4" class="checklist-label">
+                            <span class="checklist-icon">🤔</span>
+                            <span class="checklist-text">
+                                <strong>Desconfía de lo urgente:</strong> Si alguien te pide datos personales 
+                                con "urgencia", es una señal de alerta.
+                            </span>
+                        </label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="check5" class="checklist-checkbox">
+                        <label for="check5" class="checklist-label">
+                            <span class="checklist-icon">📱</span>
+                            <span class="checklist-text">
+                                <strong>Actualiza tus apps:</strong> Las actualizaciones contienen parches de 
+                                seguridad importantes.
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="checklist-progress">
+                    <span>Tu nivel de protección: </span>
+                    <span class="progress-percentage" id="progresoProteccion">0%</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================== -->
+        <!-- SECCIÓN: EL ESCUADRÓN (Quiénes somos)                       -->
+        <!-- ========================================================== -->
+        <section id="escuadron" class="section">
+            <div class="section-container">
+                <!-- PARTE 1: EL ESCUADRÓN SAFE SPACE -->
+                <div class="escuadron-block">
+                    <h2 class="section-title">
+                        <span class="title-icon">👥</span> 
+                        EL ESCUADRÓN SAFE SPACE
+                    </h2>
+                    <p class="section-description">
+                        Conoce nuestra misión, visión y los valores que nos guían en esta aventura digital.
+                    </p>
+                    
+                    <div class="mvv-grid">
+                        <div class="mvv-card">
+                            <div class="mvv-icon">🎯</div>
+                            <h3>Misión</h3>
+                            <p>
+                                Empoderar a los jóvenes de 10 a 15 años con conocimientos y herramientas 
+                                para navegar seguro en el mundo digital, formando una generación de 
+                                ciudadanos digitales conscientes y protectores de su privacidad.
+                            </p>
+                        </div>
+                        
+                        <div class="mvv-card">
+                            <div class="mvv-icon">👁️</div>
+                            <h3>Visión</h3>
+                            <p>
+                                Ser la plataforma educativa de referencia en ciberseguridad para escolares 
+                                de Latinoamérica, creando un ecosistema digital donde aprender a protegerse 
+                                sea tan natural como jugar.
+                            </p>
+                        </div>
+                        
+                        <div class="mvv-card">
+                            <div class="mvv-icon">💎</div>
+                            <h3>Valores</h3>
+                            <ul class="valores-list">
+                                <li>🔒 <strong>Seguridad:</strong> Priorizamos la protección de datos</li>
+                                <li>🤝 <strong>Trabajo en equipo:</strong> Colaboramos para lograr más</li>
+                                <li>📚 <strong>Educación:</strong> Creemos en el aprendizaje lúdico</li>
+                                <li>🌍 <strong>Inclusión:</strong> La ciberseguridad es para todos</li>
+                                <li>💡 <strong>Innovación:</strong> Buscamos soluciones creativas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- SEPARADOR VISUAL -->
+                <div class="section-divider">
+                    <span class="divider-line"></span>
+                    <span class="divider-icon">✦</span>
+                    <span class="divider-line"></span>
+                </div>
+                
+                <!-- PARTE 2: EL EQUIPO DETRÁS DE SAFE SPACE -->
+                <div class="equipo-block">
+                    <h2 class="section-subtitle">
+                        <span class="subtitle-icon">🧑‍💻</span>
+                        EL EQUIPO DETRÁS DE SAFE SPACE
+                    </h2>
+                    <p class="section-description">
+                        Un grupo de jóvenes talentosos, cada uno aportando lo mejor desde su área.
+                    </p>
+                    
+                    <div class="team-grid">
+                        <div class="team-card">
+                            <div class="team-avatar">💻</div>
+                            <h3 class="team-name">Desarrollo y Programación</h3>
+                            <p class="team-role">Ingeniería del Portal y Juego</p>
+                            <p class="team-desc">
+                                Encargados de dar vida al portal web y al juego "Cyber Detective Academy" 
+                                usando HTML, CSS y JavaScript.
+                            </p>
+                        </div>
+                        
+                        <div class="team-card">
+                            <div class="team-avatar">📊</div>
+                            <h3 class="team-name">Estrategia y Negocio</h3>
+                            <p class="team-role">Análisis y Planificación</p>
+                            <p class="team-desc">
+                                Responsables del plan de negocio, pitch de venta, estudio de mercado, 
+                                FODA y estrategias de impacto social.
+                            </p>
+                        </div>
+                        
+                        <div class="team-card">
+                            <div class="team-avatar">🎨</div>
+                            <h3 class="team-name">Diseño y Experiencia</h3>
+                            <p class="team-role">UI/UX y Contenidos</p>
+                            <p class="team-desc">
+                                Crean la identidad visual de Safe Space, diseñan interfaces amigables 
+                                y desarrollan los contenidos educativos.
+                            </p>
+                        </div>
+                        
+                        <div class="team-card team-card-highlight">
+                            <div class="team-avatar">📢</div>
+                            <h3 class="team-name">Comunicación y Marketing</h3>
+                            <p class="team-role">Difusión y Redes</p>
+                            <p class="team-desc">
+                                Gestionan la presencia en redes sociales, crean contenido promocional 
+                                y conectan Safe Space con colegios y comunidades.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-closing">
+                        <p class="closing-text">
+                            <span class="closing-quote">"</span>
+                            Juntos somos más fuertes. 
+                            <strong>Safe Space</strong> es el resultado del trabajo en equipo.
+                            <span class="closing-quote">"</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- PIE DE PÁGINA / RINCÓN DE PADRES -->
+                <div class="footer-bottom">
+                    <div class="parent-corner">
+                        <span class="parent-icon">👨‍👩‍👧</span>
+                        <div class="parent-info">
+                            <h4>📌 Rincón de Padres y Educadores</h4>
+                            <p>
+                                Safe Space es un proyecto educativo diseñado para enseñar ciberseguridad 
+                                de forma lúdica. Todos los contenidos son apropiados para jóvenes de 10 a 15 años.
+                                <br>
+                                <small>📧 Contacto: safespace@gmail.com</small>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="copyright">
+                        <p>© 2026 SafeSpace - Agencia de Ciberseguridad Escolar</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============================================================ -->
+    <!-- SCRIPTS (JavaScript)                                          -->
+    <!-- ============================================================ -->
+    <script src="script.js"></script>
+
 
 </body>
 </html>

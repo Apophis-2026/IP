@@ -18,6 +18,12 @@ const investigateBtn = document.getElementById('investigateBtn');
 investigateBtn.addEventListener('click', () => {
   missionScreen.classList.remove('active');
   gameScreen.classList.add('active');
+
+  // Inicializamos la mascota
+  if (typeof iniciarMascota === 'function') {
+      iniciarMascota();
+  }
+
 });
 
 // Detectar clic en la parte falsa
@@ -36,6 +42,12 @@ fakePart.addEventListener('click', (e) => {
     document.getElementById('scoreValue').innerText = puntos;
     missionCompleted = true;
   }
+
+  // LLAMADA A LA MASCOTA:
+  if (typeof animarExito === 'function') {
+      animarExito(); // Pixel saltará, girará y mostrará "✅ ¡Excelente!"
+  }
+
 });
 
 // Clic fuera de la parte falsa (en la barra de URL pero no en fakePart)
@@ -46,6 +58,12 @@ urlBar.addEventListener('click', (e) => {
     overlay.style.display = 'block';
     errorModal.style.display = 'block';
   }
+
+  // LLAMADA A LA MASCOTA:
+  if (typeof animarError === 'function') {
+      animarError(); // Pixel se caerá, se pondrá triste y mostrará "😅 ¡Casi!"
+  }
+
 });
 
 // Cerrar error

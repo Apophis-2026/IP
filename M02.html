@@ -26,12 +26,23 @@
       transform: scale(1.05);
       box-shadow: 0 0 35px rgba(250,204,21,0.8);
     }
+
+    @keyframes slideIn {
+        0% { transform: translateX(100px); opacity: 0; }
+        100% { transform: translateX(0); opacity: 1; }
+    }
+
   </style>
 </head>
 <body>
 
 <div class="score-bar">
   <span>🏆</span> Puntos: <span id="scoreValue">0</span>
+</div>
+
+<!-- MENSAJE DE PENALIZACIÓN -->
+<div id="penaltyMessage" style="display: none; position: fixed; top: 80px; right: 20px; background: rgba(239, 68, 68, 0.95); color: white; padding: 12px 24px; border-radius: 12px; font-weight: bold; font-size: 1.1rem; z-index: 200; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: 2px solid #ef4444; animation: slideIn 0.3s ease;">
+    ❌ ¡Has perdido 5 puntos! Intenta de nuevo.
 </div>
 
 <!-- PANTALLA 1: EXPLICACIÓN DE LA MISIÓN -->
@@ -172,6 +183,35 @@
   </div>
   <button class="modal-button" id="closeErrorBtn">🔍 Intentar de nuevo</button>
 </div>
+
+<!-- INICIO DE LA MASCOTA PIXEL -->
+<div id="mascota-container">
+    <!-- Burbuja de diálogo -->
+    <div id="dialogo-burbuja">¡Conectando!</div>
+    
+    <!-- Estructura del robot (Solo CSS) -->
+    <div class="pixel-robot">
+        <div class="robot-head">
+            <div class="robot-antenna"></div>
+            <div class="robot-screen">
+                <div class="eyes">
+                    <div class="eye"></div>
+                    <div class="eye"></div>
+                </div>
+                <div class="mouth"></div>
+            </div>
+        </div>
+        <div class="robot-body">
+            <div class="arm arm-left"></div>
+            <div class="arm arm-right"></div>
+        </div>
+    </div>
+</div>
+<!-- FIN DE LA MASCOTA PIXEL -->
+
+<!-- Enlace a los archivos de la mascota -->
+<link rel="stylesheet" href="mascota.css">
+<script src="mascota.js"></script>
 
 <script src="M02.js"></script>
 </body>
