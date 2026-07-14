@@ -170,14 +170,14 @@
     }
 
     /* ============================================
-       PANTALLA 2: Revelación educativa (2 COLUMNAS)
+       PANTALLA 2: Revelación educativa (OPTIMIZADA)
        ============================================ */
     .reveal-screen {
       width: 90%;
       max-width: 600px;
       background: linear-gradient(135deg, #1e3a8a, #0f172a);
       border-radius: 24px;
-      padding: 25px 20px;
+      padding: 30px 25px;
       text-align: center;
       border: 2px solid #38bdf8;
       display: none;
@@ -186,6 +186,7 @@
       animation: fadeIn 0.5s ease;
       scrollbar-width: thin;
       scrollbar-color: #38bdf8 transparent;
+      box-shadow: 0 0 60px rgba(56, 189, 248, 0.2);
     }
 
     .reveal-screen::-webkit-scrollbar {
@@ -204,7 +205,7 @@
 
     @media (max-width: 480px) {
       .reveal-screen {
-        padding: 18px 14px;
+        padding: 20px 16px;
         border-radius: 16px;
         max-width: 95%;
         max-height: 90vh;
@@ -212,75 +213,78 @@
       }
     }
 
+    .reveal-screen .big-icon {
+      font-size: clamp(2.5rem, 10vw, 4rem);
+      margin-bottom: 8px;
+      display: block;
+    }
+
     .reveal-screen h2 {
       color: #38bdf8;
-      font-size: clamp(1.2rem, 5vw, 1.8rem);
-      margin-bottom: 12px;
+      font-size: clamp(1.4rem, 5vw, 2rem);
+      margin-bottom: 6px;
+      text-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
     }
 
-    .reveal-screen > p {
-      color: #cbd5e1;
-      line-height: 1.5;
-      margin: 10px 0;
-      font-size: clamp(0.85rem, 3vw, 0.95rem);
+    .reveal-screen .subtitle {
+      color: #94a3b8;
+      font-size: clamp(0.85rem, 3vw, 1rem);
+      margin-bottom: 18px;
+      padding: 8px 16px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 30px;
+      display: inline-block;
     }
 
-    .good-icon {
-      font-size: clamp(2rem, 10vw, 3.5rem);
-      margin: 10px 0;
-    }
-
-    .info-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin: 12px 0;
-    }
-
-    @media (max-width: 480px) {
-      .info-grid {
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
-    }
-
-    .info-box {
-      background: #1e293b;
-      border-radius: 16px;
-      padding: 12px 15px;
-      text-align: left;
-      border-left: 3px solid #38bdf8;
-      height: fit-content;
-    }
-
-    .info-box p {
-      color: #38bdf8;
+    /* NUEVO: Texto grande de reflexión */
+    .reflection-text {
+      color: #facc15;
+      font-size: clamp(1.2rem, 4.5vw, 1.8rem);
       font-weight: bold;
-      font-size: clamp(0.8rem, 2.5vw, 0.9rem);
-      margin-bottom: 8px;
+      margin: 10px 0 6px 0;
+      line-height: 1.4;
+      text-shadow: 0 0 20px rgba(250, 204, 21, 0.2);
     }
 
-    .info-box ul {
-      padding-left: 16px;
-      margin: 0;
+    .reflection-text .highlight {
+      color: #ef4444;
+      display: block;
+      font-size: clamp(1.4rem, 5vw, 2rem);
+      margin-top: 4px;
     }
 
-    .info-box li {
-      margin: 6px 0;
+    .reveal-screen .brand {
+      font-size: clamp(1rem, 4vw, 1.4rem);
+      color: #38bdf8;
+      margin: 14px 0 6px 0;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+    }
+
+    .reveal-screen .brand small {
+      color: #94a3b8;
+      font-size: 0.6em;
+      display: block;
+      font-weight: normal;
+      letter-spacing: 1px;
+      margin-top: 2px;
+    }
+
+    /* Mensaje de protección para hijos */
+    .protect-message {
       color: #cbd5e1;
-      font-size: clamp(0.75rem, 2.5vw, 0.85rem);
-      list-style-type: none;
+      font-size: clamp(1rem, 3.5vw, 1.3rem);
+      font-weight: bold;
+      margin: 6px 0 12px 0;
+      padding: 8px 16px;
+      background: rgba(239, 68, 68, 0.15);
+      border-radius: 12px;
+      border: 1px solid rgba(239, 68, 68, 0.3);
     }
 
-    .info-box li::before {
-      content: "► ";
+    .protect-message span {
       color: #38bdf8;
-    }
-
-    .cyber-logo {
-      font-size: clamp(1.2rem, 5vw, 1.8rem);
-      color: #38bdf8;
-      margin: 10px 0;
     }
 
     .invite-btn {
@@ -288,33 +292,30 @@
       color: #1e3a8a;
       font-weight: bold;
       border: none;
-      padding: clamp(12px, 4vw, 15px) clamp(20px, 6vw, 30px);
+      padding: clamp(14px, 4vw, 18px) clamp(24px, 6vw, 35px);
       border-radius: 40px;
-      font-size: clamp(0.9rem, 3vw, 1rem);
+      font-size: clamp(1rem, 3.5vw, 1.1rem);
       cursor: pointer;
-      margin: 8px auto;
-      transition: 0.2s;
+      margin: 10px auto 4px auto;
+      transition: 0.3s;
       touch-action: manipulation;
-      min-height: 44px;
-      min-width: 200px;
-      box-shadow: 0 4px 15px rgba(250,204,21,0.3);
+      min-height: 48px;
+      min-width: 220px;
+      box-shadow: 0 4px 25px rgba(250, 204, 21, 0.3);
       display: inline-block;
-      position: sticky;
-      bottom: 0;
-      z-index: 10;
     }
 
     @media (max-width: 480px) {
       .invite-btn {
-        min-width: 160px;
-        padding: 12px 20px;
-        font-size: 0.9rem;
+        min-width: 180px;
+        padding: 14px 20px;
+        font-size: 0.95rem;
       }
     }
 
     .invite-btn:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 30px rgba(250,204,21,0.6);
+      box-shadow: 0 0 40px rgba(250, 204, 21, 0.5);
     }
 
     .invite-btn:active {
@@ -326,12 +327,22 @@
       gap: 12px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-top: 15px;
+      margin-top: 10px;
+    }
+
+    /* Texto de la escuela */
+    .school-text {
+      color: #64748b;
+      font-size: clamp(0.7rem, 2vw, 0.85rem);
+      margin-top: 10px;
+      letter-spacing: 1px;
+      font-weight: bold;
+      border-top: 1px solid rgba(100, 116, 139, 0.2);
+      padding-top: 12px;
     }
 
     /* ============================================
-       CARTEL TECNOLÓGICO NEGRO CON NEÓN AZUL
-       - CORREGIDO: centrado absoluto clásico
+       CARTEL TECNOLÓGICO (MODAL)
        ============================================ */
     .modal-overlay {
       position: fixed;
@@ -344,7 +355,6 @@
       -webkit-backdrop-filter: blur(8px);
       display: none;
       z-index: 9999;
-      /* Eliminamos flex para usar posicionamiento absoluto */
     }
 
     .modal-overlay.active {
@@ -355,8 +365,8 @@
       background: #0a0a0a;
       border: 2px solid #00d4ff;
       border-radius: 28px;
-      padding: 25px 22px;
-      max-width: 500px;
+      padding: 28px 24px;
+      max-width: 480px;
       width: 90%;
       box-shadow: 0 0 60px rgba(0, 212, 255, 0.25), inset 0 0 40px rgba(0, 212, 255, 0.05);
       text-align: center;
@@ -365,7 +375,6 @@
       overflow-y: auto;
       scrollbar-width: thin;
       scrollbar-color: #00d4ff transparent;
-      /* Centrado absoluto clásico - el mismo que funciona en las otras pantallas */
       position: absolute;
       top: 50%;
       left: 50%;
@@ -387,63 +396,70 @@
     }
 
     .modal-card .modal-icon {
-      font-size: clamp(2.2rem, 10vw, 3.5rem);
-      margin-bottom: 10px;
+      font-size: clamp(2.5rem, 10vw, 3.8rem);
+      margin-bottom: 8px;
       filter: drop-shadow(0 0 12px #00d4ff);
     }
 
     .modal-card h3 {
       color: #00d4ff;
-      font-size: clamp(1.4rem, 5vw, 2rem);
-      margin-bottom: 12px;
+      font-size: clamp(1.5rem, 5vw, 2.2rem);
+      margin-bottom: 4px;
       letter-spacing: 2px;
       text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
     }
 
-    .modal-card .modal-sub {
+    .modal-card .modal-tag {
       color: #94a3b8;
-      font-size: clamp(0.85rem, 2.8vw, 1rem);
-      line-height: 1.6;
-      margin-bottom: 16px;
-      background: #111;
-      padding: 14px;
-      border-radius: 12px;
-      border-left: 3px solid #00d4ff;
-      text-align: left;
+      font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: block;
     }
 
-    .modal-card .modal-sub strong {
-      color: #38bdf8;
+    .modal-card .neon-line {
+      width: 60%;
+      height: 2px;
+      margin: 10px auto;
+      background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+      opacity: 0.6;
     }
 
-    .modal-card .modal-features {
-      display: flex;
-      flex-direction: column;
+    .modal-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 10px;
-      margin: 16px 0;
+      margin: 14px 0;
       text-align: left;
     }
 
-    .modal-card .modal-features div {
+    @media (max-width: 480px) {
+      .modal-features {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+    }
+
+    .modal-features .feature-item {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       color: #cbd5e1;
-      font-size: clamp(0.8rem, 2.5vw, 0.9rem);
-      background: #111;
-      padding: 10px 14px;
+      font-size: clamp(0.75rem, 2.2vw, 0.85rem);
+      background: rgba(17, 17, 17, 0.8);
+      padding: 10px 12px;
       border-radius: 10px;
       border: 1px solid #1e3a5f;
     }
 
-    .modal-card .modal-features div span {
+    .modal-features .feature-item span {
       color: #00d4ff;
       font-size: 1.2rem;
       min-width: 28px;
     }
 
-    /* Botón de cerrar - lo mantengo por si quieres volver a agregarlo */
-    .modal-close-btn {
+    .modal-card .modal-close-btn {
       background: transparent;
       border: 1.5px solid #00d4ff;
       color: #00d4ff;
@@ -455,28 +471,10 @@
       transition: 0.3s;
       margin-top: 10px;
       touch-action: manipulation;
-      box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
       min-height: 44px;
       min-width: 160px;
       display: inline-block;
       background: rgba(0, 0, 0, 0.8);
-    }
-
-    @media (max-width: 480px) {
-      .modal-close-btn {
-        min-width: 140px;
-        padding: 10px 20px;
-        font-size: 0.85rem;
-      }
-      .modal-card {
-        padding: 20px 16px;
-        max-height: 88vh;
-        width: 92%;
-      }
-      .modal-card .modal-features div {
-        padding: 8px 12px;
-        gap: 8px;
-      }
     }
 
     .modal-close-btn:hover {
@@ -489,50 +487,75 @@
       transform: scale(0.95);
     }
 
-    .modal-card .neon-line {
-      width: 70%;
-      height: 2px;
-      margin: 12px auto;
-      background: linear-gradient(90deg, transparent, #00d4ff, transparent);
-      opacity: 0.6;
+    .modal-card .mascot-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 212, 255, 0.1);
+      padding: 6px 16px;
+      border-radius: 30px;
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      margin: 6px 0 10px 0;
+      color: #38bdf8;
+      font-size: clamp(0.8rem, 2.5vw, 0.9rem);
     }
 
-    /* Ajuste extra para pantallas muy pequeñas */
     @media (max-height: 700px) {
       .screen, .reveal-screen, .modal-card {
-        padding: 15px 12px;
+        padding: 14px 12px;
       }
-      .hacker-icon, .good-icon, .modal-icon {
+      .hacker-icon, .reveal-screen .big-icon, .modal-card .modal-icon {
         font-size: 1.8rem;
-        margin-bottom: 6px;
+        margin-bottom: 4px;
       }
       h1, .reveal-screen h2, .modal-card h3 {
         font-size: 1rem;
-        margin-bottom: 8px;
+        margin-bottom: 4px;
       }
-      .warning-text, .modal-sub {
+      .warning-text {
         padding: 8px;
-        margin: 8px 0;
+        margin: 6px 0;
+        font-size: 0.8rem;
       }
       .bitcoin-address {
-        padding: 8px;
-        margin: 8px 0;
+        padding: 6px;
+        margin: 6px 0;
+        font-size: 0.6rem;
       }
       .timer {
-        margin: 8px 0;
-        font-size: 1.2rem;
+        margin: 6px 0;
+        font-size: 1.1rem;
       }
-      .info-box {
-        padding: 8px 12px;
+      .reflection-text {
+        font-size: 1rem;
+        margin: 6px 0;
       }
-      .modal-features div {
+      .reflection-text .highlight {
+        font-size: 1.1rem;
+      }
+      .protect-message {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+        margin: 4px 0 8px 0;
+      }
+      .modal-features .feature-item {
         padding: 6px 10px;
+        font-size: 0.7rem;
       }
       .btn, .invite-btn, .modal-close-btn {
         padding: 10px 16px;
         min-height: 36px;
         min-width: 140px;
         font-size: 0.8rem;
+      }
+      .school-text {
+        font-size: 0.6rem;
+        padding-top: 8px;
+        margin-top: 6px;
+      }
+      .reveal-screen .brand {
+        font-size: 0.9rem;
+        margin: 8px 0 4px 0;
       }
     }
   </style>
@@ -563,50 +586,36 @@
   <button class="btn" id="scaredBtn">😨 ¡NO QUIERO PERDER MIS FOTOS!</button>
 </div>
 
-<!-- PANTALLA 2: REVELACIÓN EDUCATIVA (2 COLUMNAS) -->
+<!-- PANTALLA 2: REVELACIÓN EDUCATIVA (ACTUALIZADA) -->
 <div id="revealScreen" class="reveal-screen">
-  <div class="good-icon">🎓🕵️‍♂️🎓</div>
+  <span class="big-icon">🎓🕵️</span>
   
   <h2>¡ES SOLO UNA SIMULACIÓN!</h2>
-  
-  <p>
-    <strong>Tu teléfono NO está infectado.</strong><br>
-    Esto es una demostración de cómo los ciberdelincuentes intentan asustarte para que pagues.
-  </p>
+  <span class="subtitle">🔒 Tu teléfono NO está infectado</span>
 
-  <div class="info-grid">
-    <div class="info-box">
-      <p>📚 ¿Qué acabas de experimentar?</p>
-      <ul>
-        <li>Ransomware <strong>falso</strong></li>
-        <li>Cuenta Bitcoin <strong>falsa</strong></li>
-        <li>Temporizador para <strong>asustarte</strong></li>
-      </ul>
-    </div>
-
-    <div class="info-box">
-      <p>🛡️ ¿Cómo protegerte?</p>
-      <ul>
-        <li>NUNCA pagues rescates</li>
-        <li>Haz copias de seguridad</li>
-        <li>No abras enlaces sospechosos</li>
-      </ul>
-    </div>
+  <!-- NUEVO: Texto grande de reflexión -->
+  <div class="reflection-text">
+    ¿Viste qué fácil fue engañarte siendo adulto?
+    <span class="highlight">Ahora piensa en tus hijos...</span>
   </div>
 
-  <div class="cyber-logo">
-    🕵️ Cyber Detective Academy
+  <!-- NUEVO: Mensaje de protección -->
+  <div class="protect-message">
+    🛡️ <span>Enseña a tus hijos a protegerse</span>
   </div>
-
-  <p style="font-weight: bold; color: #facc15; font-size: clamp(0.95rem, 3.5vw, 1.1rem); margin: 5px 0;">
-    📍 ¡Visítanos en nuestro módulo!
-  </p>
-  <p style="color: #cbd5e1; font-size: clamp(0.75rem, 2.5vw, 0.85rem); margin: 0 0 10px 0;">
-    Aprende a protegerte de estos engaños con nuestro juego interactivo
-  </p>
 
   <div class="btn-group">
-    <button class="invite-btn" id="inviteBtn">🎮 Conocer el juego</button>
+    <button class="invite-btn" id="inviteBtn">🔍 Búscanos como Ciber Minds</button>
+  </div>
+
+  <div class="brand">
+    🕵️ CYBER DETECTIVE ACADEMY
+    <small>Organismo Internacional para la Defensa de Ciberataques</small>
+  </div>
+
+  <!-- NUEVO: Texto de la escuela -->
+  <div class="school-text">
+    IP Innova School SM-2 2026
   </div>
 </div>
 
@@ -615,32 +624,30 @@
   <div class="modal-card">
     <div class="modal-icon">🕹️⚡</div>
     <h3>CYBER DETECTIVE</h3>
+    <span class="modal-tag">🔐 Aprende a defenderte</span>
     <div class="neon-line"></div>
-    <div class="modal-sub">
-      <strong>El juego que te enseña a defenderte</strong><br>
-      Aprende a identificar estafas digitales.
-      <span style="display:block; margin-top:8px; color:#38bdf8;">
-        ⏳ Duración: 15 min · Edad: 10-15 años
-      </span>
+
+    <div class="mascot-badge">
+      🤖 Con IA · Pixel te guía
     </div>
 
     <div class="modal-features">
-      <div><span>🔍</span> Simulaciones de ataques reales</div>
-      <div><span>🛡️</span> Estrategias de defensa digital</div>
-      <div><span>🏆</span> Retos y recompensas</div>
-      <div><span>📱</span> Aprendizaje gamificado</div>
+      <div class="feature-item"><span>🔍</span> Simulaciones reales</div>
+      <div class="feature-item"><span>🛡️</span> Estrategias de defensa</div>
+      <div class="feature-item"><span>🏆</span> Retos y recompensas</div>
+      <div class="feature-item"><span>📱</span> Aprendizaje gamificado</div>
     </div>
 
-    <div style="color: #00d4ff; font-size: 0.85rem; margin: 8px 0; letter-spacing: 1px;">
+    <div style="color: #00d4ff; font-size: 0.7rem; margin: 4px 0; letter-spacing: 2px; opacity: 0.6;">
       ── ⋆⋅☆⋅⋆ ──
     </div>
 
-    <p style="color: #94a3b8; font-size: clamp(0.8rem, 2vw, 1.2rem); margin: 6px 0 12px 0;">
-      Búscanos como: <strong style="color: #38bdf8;">SAFE SPACE</strong>
+    <p style="color: #94a3b8; font-size: clamp(0.75rem, 2vw, 0.9rem); margin: 4px 0 10px 0;">
+      📍 Búscanos como: <strong style="color: #38bdf8;">SAFE SPACE</strong>
     </p>
     
-    <!-- Botón de cerrar (oculto pero disponible si quieres mostrarlo) -->
-    <button class="modal-close-btn" id="closeModalBtn" style="display: none;">✕ CERRAR</button>
+    <!-- El botón CERRAR ahora cierra la página -->
+    <button class="modal-close-btn" id="closeModalBtn">✕ CERRAR</button>
   </div>
 </div>
 
@@ -665,7 +672,7 @@
   });
 
   // ============================================
-  // 3. BOTÓN "CONOCER EL JUEGO" → ABRE MODAL
+  // 3. BOTÓN "Búscanos como Safe Place" → ABRE MODAL
   // ============================================
   inviteBtn.addEventListener('click', function(e) {
     techModal.classList.add('active');
@@ -673,28 +680,35 @@
   });
 
   // ============================================
-  // 4. CERRAR MODAL - FUNCIONALIDAD CON CLICK FUERA
+  // 4. CERRAR MODAL - AHORA CIERRA LA PÁGINA
   // ============================================
-  function closeModal() {
+  function closeModalAndPage() {
+    // Cierra el modal
     techModal.classList.remove('active');
+    // Cierra la página (funciona en navegadores modernos)
+    window.close();
+    // Fallback: si window.close() no funciona, redirige a about:blank
+    setTimeout(function() {
+      window.location.href = 'about:blank';
+    }, 300);
   }
 
-  // Cerrar al hacer clic fuera del contenido (overlay)
+  // El botón cerrar ahora cierra la página
+  closeModalBtn.addEventListener('click', closeModalAndPage);
+
+  // También al hacer clic fuera del modal (overlay) se cierra la página
   techModal.addEventListener('click', function(e) {
     if (e.target === techModal) {
-      closeModal();
+      closeModalAndPage();
     }
   });
 
-  // Cerrar con tecla ESC
+  // Tecla ESC también cierra la página
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && techModal.classList.contains('active')) {
-      closeModal();
+      closeModalAndPage();
     }
   });
-
-  // Si en algún momento quieres mostrar el botón de cerrar, cambia el display a 'inline-block'
-  // closeModalBtn.addEventListener('click', closeModal);
 
   // ============================================
   // 5. DETECCIÓN DE MÓVIL
