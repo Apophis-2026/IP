@@ -80,9 +80,9 @@ seePageBtn.addEventListener('click', () => {
     actualizarPuntosEnPantalla(); // Actualizar puntos al entrar
 
     // LLAMADA A LA MASCOTA:
-    if (typeof animarExito === 'function') {
-        animarExito(); // Pixel saltará, girará y mostrará "✅ ¡Excelente!"
-    }
+//    if (typeof animarExito === 'function') {
+  //      animarExito(); // Pixel saltará, girará y mostrará "✅ ¡Excelente!"
+  //  }
 
 });
 
