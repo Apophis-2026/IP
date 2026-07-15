@@ -4,6 +4,35 @@ document.getElementById('scoreValue').innerText = puntos;
 
 let missionCompleted = false;
 
+
+// ========== CONFIGURACIÓN DEL AUDIO ==========
+// Crear el objeto de audio (ubicado en la misma carpeta)
+const audioInicio = new Audio('inicio.mp3');
+
+// Configurar el audio
+audioInicio.volume = 0.9; // Volumen al 90%
+audioInicio.loop = false; // No repetir
+
+// Función para intentar reproducir el audio
+function reproducirAudioInicio() {
+    audioInicio.play()
+        .then(() => {
+            console.log('🎵 Audio de inicio reproduciéndose');
+        })
+        .catch(error => {
+            console.log('⚠️ Reproducción automática bloqueada:', error);
+            // Intentar reproducir con la primera interacción del usuario
+            document.addEventListener('click', function playOnClick() {
+                audioInicio.play()
+                    .then(() => console.log('🎵 Audio iniciado por interacción'))
+                    .catch(err => console.log('Error al reproducir:', err));
+                document.removeEventListener('click', playOnClick);
+            }, { once: true });
+        });
+}
+
+// ========== FIN CONFIGURACIÓN AUDIO ==========
+
 const missionScreen = document.getElementById('missionScreen');
 const gameScreen = document.getElementById('gameScreen');
 const fakePart = document.getElementById('fakePart');
@@ -12,12 +41,19 @@ const overlay = document.getElementById('overlay');
 const successModal = document.getElementById('successModal');
 const errorModal = document.getElementById('errorModal');
 
+
+// ===== SOLO SE AGREGA ESTA LÍNEA PARA REPRODUCIR EL AUDIO =====
+  reproducirAudioInicio();
+// ==============================================================  
+
+
 // Botón para iniciar investigación
 const investigateBtn = document.getElementById('investigateBtn');
 
 investigateBtn.addEventListener('click', () => {
   missionScreen.classList.remove('active');
   gameScreen.classList.add('active');
+
 
   // Inicializamos la mascota
   if (typeof iniciarMascota === 'function') {
