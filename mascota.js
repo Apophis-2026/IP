@@ -7,6 +7,20 @@
 // Variable para controlar el temporizador de la burbuja
 let temporizadorBurbuja = null;
 
+
+// ============================================
+// NUEVO: CONFIGURACIÓN DE AUDIOS
+// ============================================
+// Crear los objetos de audio (deben estar en la misma carpeta)
+const audioExito = new Audio('Exito.mp3');
+const audioError = new Audio('Error.mp3');
+
+// Configurar volúmenes (opcional)
+audioExito.volume = 0.9;
+audioError.volume = 0.9;
+// ============================================
+
+
 // Objeto con las frases motivadoras para cada estado
 const FRASES = {
     saludo: ["¡Hola, CiberAgente!", "Conectado...", "¡Listo para la misión!"],
@@ -41,6 +55,34 @@ function mostrarMensaje(texto, duracion = 2500) {
     }, duracion);
 }
 
+
+// ============================================
+// NUEVO: FUNCIONES PARA REPRODUCIR AUDIOS
+// ============================================
+/**
+ * Reproduce el audio de éxito
+ */
+function reproducirAudioExito() {
+    // Reiniciar el audio por si ya se estaba reproduciendo
+    audioExito.currentTime = 0;
+    audioExito.play()
+        .then(() => console.log('🎵 Audio de éxito reproducido'))
+        .catch(error => console.log('⚠️ Error al reproducir audio de éxito:', error));
+}
+
+/**
+ * Reproduce el audio de error
+ */
+function reproducirAudioError() {
+    // Reiniciar el audio por si ya se estaba reproduciendo
+    audioError.currentTime = 0;
+    audioError.play()
+        .then(() => console.log('🎵 Audio de error reproducido'))
+        .catch(error => console.log('⚠️ Error al reproducir audio de error:', error));
+}
+// ============================================
+
+
 /**
  * Inicializa la mascota (Saludo inicial)
  * Se debe llamar al cargar la página o al empezar una misión
@@ -72,6 +114,11 @@ function animarExito() {
     const fraseExito = FRASES.exito[Math.floor(Math.random() * FRASES.exito.length)];
     mostrarMensaje(fraseExito, 3000);
 
+
+   // ===== REPRODUCIR AUDIO DE ÉXITO =====
+    reproducirAudioExito();
+
+
     // Quitar la clase de éxito después de que termine la animación (para que pueda reutilizarse)
     setTimeout(() => {
         robot.classList.remove('estado-exito');
@@ -94,6 +141,11 @@ function animarError() {
     // Mensaje aleatorio de ánimo
     const fraseError = FRASES.error[Math.floor(Math.random() * FRASES.error.length)];
     mostrarMensaje(fraseError, 3000);
+
+
+    // ===== REPRODUCIR AUDIO DE ERROR =====
+    reproducirAudioError();
+
 
     // Quitar la clase de error después de la animación
     setTimeout(() => {
